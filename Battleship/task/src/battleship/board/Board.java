@@ -1,21 +1,22 @@
 package battleship.board;
 
-public class board {
+import battleship.utils.GameSetupUtils;
 
-    String[][] board;
+public class Board {
 
-    public board() {
+    public String[][] board;
+
+    public Board() {
         initBoard();
     }
 
-    public String[][] initBoard() {
+    public void initBoard() {
         this.board = new String[10][10];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                board[i][j] = "~";
+        for (int i = 0; i < this.board.length; i++) {
+            for (int j = 0; j < this.board[0].length; j++) {
+                this.board[i][j] = "~";
             }
         }
-        return board;
     }
 
     public void displayBoard() {
@@ -32,30 +33,5 @@ public class board {
             }
         }
     }
-
-    public void placeAircraftCarrier(String aircraftCarrierPosition) {
-
-    }
-
-    public void placeBattleship() {
-
-    }
-
-    public void placeSubmarine() {
-
-    }
-
-    public void placeCruiser() {
-
-    }
-
-    public void placeDestroyer() {
-
-    }
-
-    public void isConsecutive() {
-
-    }
-
 
 }
