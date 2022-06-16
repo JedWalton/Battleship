@@ -1,7 +1,5 @@
 package battleship.board;
 
-import battleship.utils.GameSetupUtils;
-
 public class Board {
 
     public String[][] board;

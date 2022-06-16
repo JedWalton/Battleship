@@ -1,7 +1,7 @@
 package battleship;
 
 import battleship.board.Board;
-import battleship.utils.GameSetupUtils;
+import battleship.utils.gamesetup.GameSetupUtils;
 
 public class GameInstance {
 
@@ -12,7 +12,8 @@ public class GameInstance {
 
     public void startGame() {
         this.board = new Board();
-        this.board = GameSetupUtils.placeShipsOnBoard(this.board);
+        this.board.displayBoard();
+        this.board = GameSetupUtils.placeAllShipsOnBoard(this.board);
         this.board.displayBoard();
     }
 }

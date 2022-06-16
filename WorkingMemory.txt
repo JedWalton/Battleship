@@ -1,0 +1,4 @@
+All User Input Menus for ship placement in the game setup are carried out within the ships package.
+This only needs to be called from the battleship.utils.gamesetup.GameSetupUtils.java class.
+
+choose the bug. Wrong placement.. or more 

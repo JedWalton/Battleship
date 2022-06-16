@@ -282,22 +282,37 @@ files:
         }
     }
   learner_created: false
-- name: src/battleship/command/Command.java
-  visible: true
-  learner_created: true
 - name: src/battleship/board/Board.java
   visible: true
   learner_created: true
 - name: src/battleship/GameInstance.java
   visible: true
   learner_created: true
-- name: src/battleship/utils/GameSetupUtils.java
-  visible: true
-  learner_created: true
 - name: src/battleship/utils/UserInput.java
   visible: true
   learner_created: true
 - name: test/battleship/utils/GameSetupUtilsTest.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/GameSetupUtils.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/ships/PlacementOfShips.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/ships/Ship.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/ships/helpers/ShipUtils.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/ships/helpers/ShipPlacer.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/ships/helpers/ShipPlacementValidation.java
+  visible: true
+  learner_created: true
+- name: src/battleship/utils/gamesetup/ships/helpers/ShipDirection.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10594#comment
