@@ -8,5 +8,6 @@ public enum ShipDirection {
     SouthEast,
     SouthWest,
     NorthEast,
-    NorthWest
+    NorthWest,
+    Invalid
 }

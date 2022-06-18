@@ -2,68 +2,61 @@ package battleship.utils;
 
 import battleship.board.Board;
 
-import javax.management.relation.RoleNotFoundException;
-import java.util.Arrays;
-
 public class GameSetupUtils {
     private GameSetupUtils() {
 
     }
 
-    public static Board placeAllShipsOnBoard(Board board) throws RoleNotFoundException {
+    public static Board placeAllShipsOnBoard(Board board) {
         board.displayBoard();
         placeAircraftCarrierMessage();
-        board = setupShip(board, 5);
-//        board.displayBoard();
-//        placeBattleshipMessage();
-//        Ship.placeShipOnBoard(board, 4);
-//        board.displayBoard();
-//        placeSubmarineMessage();
-//        Ship.placeShipOnBoard(board, 3);
-//        board.displayBoard();
-//        placeCruiserMessage();
-//        Ship.placeShipOnBoard(board, 2);
-//        board.displayBoard();
-//        placeDestroyerMessage();
-//        Ship.placeShipOnBoard(board, 2);
+        board = initShip(board, 5);
+        board.displayBoard();
+        placeBattleshipMessage();
+        board = initShip(board, 4);
+        board.displayBoard();
+        placeSubmarineMessage();
+        board = initShip(board, 3);
+        board.displayBoard();
+        placeCruiserMessage();
+        board = initShip(board, 3);
+        board.displayBoard();
+        placeDestroyerMessage();
+        board = initShip(board, 2);
+        board.displayBoard();
+
         return board;
     }
 
-    private static Board setupShip(Board board, int i) throws RoleNotFoundException {
-        boolean validShipPlacement = false;
-        while(!validShipPlacement) {
-            int[] BoardCoordsX1Y1X2Y2 = UserInput.getValidUserInput(board, i);
-            validShipPlacement = ShipPlacementValidation.isValidShipPlacement(BoardCoordsX1Y1X2Y2, board, i);
+    private static Board initShip(Board board, int shipLength) {
+
+        int[] UserInputBoardCoordsX1Y1X2Y2 = UserInput.getValidUserInput(board, shipLength);
+
+        if (!ShipPlacementValidation.isValidShipPlacement(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+            initShip(board, shipLength);
         }
+        ShipPlacer.placeShipOnBoard(UserInputBoardCoordsX1Y1X2Y2, board, shipLength);
+
         return board;
     }
 
     private static void placeAircraftCarrierMessage() {
-        System.out.println();
-        System.out.println();
-        System.out.println("Enter the coordinates of the Aircraft Carrier (5 cells):");
+        System.out.println("\n\nEnter the coordinates of the Aircraft Carrier (5 cells):\n");
     }
 
     private static void placeBattleshipMessage() {
-        System.out.println();
-        System.out.println();
-        System.out.println("Enter the coordinates of the Battleship (4 cells):");
+        System.out.println("\n\nEnter the coordinates of the Battleship (4 cells):\n");
     }
 
     private static void placeSubmarineMessage() {
-        System.out.println();
-        System.out.println();
-        System.out.println("Enter the coordinates of the Submarine (3 cells):");
+        System.out.println("Enter the coordinates of the Submarine (3 cells):\n");
     }
 
     private static void placeCruiserMessage() {
-        System.out.println();
-        System.out.println();
-        System.out.println("Enter the coordinates of the Cruiser (3 cells):");
+        System.out.println("\n\nEnter the coordinates of the Cruiser (3 cells):\n");
     }
 
     private static void placeDestroyerMessage() {
-        System.out.println();
-        System.out.println();
-        System.out.println("Enter the coordinates of the Destroyer (2 cells):");
-    }}
+        System.out.println("\n\nEnter the coordinates of the Destroyer (2 cells):\n");
+    }
+}

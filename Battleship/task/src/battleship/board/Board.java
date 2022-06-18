@@ -27,7 +27,7 @@ public class Board {
                 if (j == 0) {
                     System.out.print((char) (i + 65));
                 }
-                System.out.print(" " + board[i][j]);
+                System.out.print(" " + board[j][i]);
             }
         }
     }

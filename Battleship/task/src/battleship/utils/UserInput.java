@@ -2,7 +2,6 @@ package battleship.utils;
 
 import battleship.board.Board;
 
-import javax.management.relation.RoleNotFoundException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -11,18 +10,23 @@ public class UserInput {
     private UserInput() {
     }
 
-    public static int[] getValidUserInput(Board board, int shipLength) throws RoleNotFoundException {
+    public static int[] getValidUserInput(Board board, int shipLength) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
+        System.out.println();
         String[] inputTokensUnprocessed = tokenizeTheInput(input);
         String[] inputTokens = trimWhitespace(inputTokensUnprocessed);
 
-        if (tokensAreValid(inputTokens)) {
-            return convertValidTokensToBoardCoordsX1Y1X2Y2(inputTokens);
+
+        if (!tokensAreValid(inputTokens)) {
+            System.out.println("Error");
+            getValidUserInput(board, shipLength);
         }
 
-        throw new RoleNotFoundException("Something went seriously wrong in your input validation method: getValidUserInput");
+
+        return convertValidTokensToBoardCoordsX1Y1X2Y2(inputTokens);
+
     }
 
 
