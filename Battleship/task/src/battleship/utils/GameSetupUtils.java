@@ -31,7 +31,6 @@ public class GameSetupUtils {
 
     private static Board setupShip(Board board, int i) throws RoleNotFoundException {
         int[] BoardCoordsX1Y1X2Y2 = UserInput.getValidUserInput(board, i);
-        System.out.println(Arrays.toString(BoardCoordsX1Y1X2Y2));
         return board;
     }
 

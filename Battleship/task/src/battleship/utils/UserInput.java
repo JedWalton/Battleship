@@ -18,13 +18,14 @@ public class UserInput {
         String[] inputTokensUnprocessed = tokenizeTheInput(input);
         String[] inputTokens = trimWhitespace(inputTokensUnprocessed);
         String[] inputTokensInX1Y1X2Y2 = swapXandY(inputTokens);
-        System.out.println(Arrays.toString(inputTokensInX1Y1X2Y2));
-//        if (tokensAreValid(inputTokens)) {
-//            int[] BoardCoordsX1Y1X2Y2 = convertValidTokensToBoardCoordsX1Y1X2Y2(inputTokens);
-//            return BoardCoordsX1Y1X2Y2;
-//            if(ShipPlacementValidation.isValidShipPlacement(inputTokens, board, shipLength)) {
+
+
+        if (tokensAreValid(inputTokens)) {
+            int[] BoardCoordsX1Y1X2Y2 = convertValidTokensToBoardCoordsX1Y1X2Y2(inputTokens);
+            System.out.println(Arrays.toString(BoardCoordsX1Y1X2Y2));
+            return BoardCoordsX1Y1X2Y2;
 //
-//            }
+        }
 //        } else {
 //            getValidUserInput(board, shipLength);
 //        }
