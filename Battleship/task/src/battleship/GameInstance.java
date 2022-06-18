@@ -1,7 +1,9 @@
 package battleship;
 
 import battleship.board.Board;
-import battleship.utils.gamesetup.GameSetupUtils;
+import battleship.utils.GameSetupUtils;
+
+import javax.management.relation.RoleNotFoundException;
 
 public class GameInstance {
 
@@ -10,10 +12,8 @@ public class GameInstance {
     public GameInstance() {
     }
 
-    public void startGame() {
+    public void startGame() throws RoleNotFoundException {
         this.board = new Board();
-        this.board.displayBoard();
-        this.board = GameSetupUtils.placeAllShipsOnBoard(this.board);
-        this.board.displayBoard();
+        GameSetupUtils.placeAllShipsOnBoard(this.board);
     }
 }

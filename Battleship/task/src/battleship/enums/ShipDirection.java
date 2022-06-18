@@ -1,4 +1,4 @@
-package battleship.utils.gamesetup.ships.helpers;
+package battleship.enums;
 
 public enum ShipDirection {
     East,
