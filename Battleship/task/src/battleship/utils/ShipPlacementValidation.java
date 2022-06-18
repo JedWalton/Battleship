@@ -15,6 +15,7 @@ public class ShipPlacementValidation {
         }
         return false;
     }
+
     private static boolean ShipPlacementIsNotOutOfBounds(int[] userInputBoardCoordinatesX1Y1X2Y2) {
         for (int j : userInputBoardCoordinatesX1Y1X2Y2) {
             if (j > 9 || j < 0) {
@@ -82,4 +83,5 @@ public class ShipPlacementValidation {
         }
         throw new RuntimeException("We only see this if we accept invalid direction.");
     }
+
 }
