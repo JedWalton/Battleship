@@ -45,22 +45,6 @@ public class ShipPlacementValidation {
                 if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0]][UserInputBoardCoordsX1Y1X2Y2[1] + i].equals("~")) {
                     return false;
                 }
-            } else if (shipDirection.equals(ShipDirection.NorthEast)) {
-                if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] + i][UserInputBoardCoordsX1Y1X2Y2[1] - i].equals("~")) {
-                    return false;
-                }
-            } else if (shipDirection.equals(ShipDirection.NorthWest)) {
-                if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] - i][UserInputBoardCoordsX1Y1X2Y2[1] - i].equals("~")) {
-                    return false;
-                }
-            } else if (shipDirection.equals(ShipDirection.SouthEast)) {
-                if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] + i][UserInputBoardCoordsX1Y1X2Y2[1] + i].equals("~")) {
-                    return false;
-                }
-            } else if (shipDirection.equals(ShipDirection.SouthWest)) {
-                if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] - i][UserInputBoardCoordsX1Y1X2Y2[1] + i].equals("~")) {
-                    return false;
-                }
             }
         }
         return true;
@@ -86,14 +70,6 @@ public class ShipPlacementValidation {
             return true;
         } else if (userInput[0] == userInput[2] && (userInput[1] == userInput[3] - (shipLength - 1))) {
             return true;
-        } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
-            return true;
-        } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
-            return true;
-        } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
-            return true;
-        } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
-            return true;
         }
         return false;
     }
@@ -109,15 +85,8 @@ public class ShipPlacementValidation {
             return ShipDirection.North;
         } else if (userInput[0] == userInput[2] && (userInput[1] == userInput[3] - (shipLength - 1))) {
             return ShipDirection.South;
-        } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
-            return ShipDirection.SouthEast;
-        } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
-            return ShipDirection.SouthWest;
-        } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
-            return ShipDirection.NorthEast;
-        } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
-            return ShipDirection.NorthWest;
         }
+
         return ShipDirection.Invalid;
     }
 
