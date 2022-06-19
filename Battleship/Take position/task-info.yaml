@@ -288,16 +288,7 @@ files:
 - name: src/battleship/GameInstance.java
   visible: true
   learner_created: true
-- name: test/battleship/utils/GameSetupUtilsTest.java
-  visible: true
-  learner_created: true
 - name: src/battleship/enums/ShipDirection.java
-  visible: true
-  learner_created: true
-- name: test/battleship/utils/UserInputTest.java
-  visible: true
-  learner_created: true
-- name: src/battleship/utils/GameSetupUtils.java
   visible: true
   learner_created: true
 - name: src/battleship/utils/UserInput.java
@@ -309,6 +300,12 @@ files:
 - name: src/battleship/utils/ShipPlacer.java
   visible: true
   learner_created: true
+- name: src/battleship/utils/GameSetupUtils.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10594#comment
-status: Failed
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sun, 19 Jun 2022 23:34:21 UTC
+record: 1

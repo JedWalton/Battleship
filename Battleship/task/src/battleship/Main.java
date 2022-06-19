@@ -5,7 +5,7 @@ import javax.management.relation.RoleNotFoundException;
 
 public class Main {
 
-    public static void main(String[] args) throws RoleNotFoundException {
+    public static void main(String[] args) {
         GameInstance battleship = new GameInstance();
         battleship.startGame();
     }

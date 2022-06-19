@@ -10,7 +10,7 @@ public class UserInput {
     private UserInput() {
     }
 
-    public static int[] getValidUserInput(Board board, int shipLength) {
+    public static int[] getValidUserInput() {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
@@ -21,7 +21,7 @@ public class UserInput {
 
         if (!tokensAreValid(inputTokens)) {
             System.out.println("Error");
-            getValidUserInput(board, shipLength);
+            getValidUserInput();
         }
 
 

@@ -450,6 +450,473 @@ files:
         }
     }
   learner_created: false
+- name: src/battleship/utils/UserInput.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+
+    import java.util.Arrays;
+    import java.util.Objects;
+    import java.util.Scanner;
+
+    public class UserInput {
+        private UserInput() {
+        }
+
+        public static int[] getValidUserInput(Board board, int shipLength) {
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+
+            System.out.println();
+            String[] inputTokensUnprocessed = tokenizeTheInput(input);
+            String[] inputTokens = trimWhitespace(inputTokensUnprocessed);
+
+
+            if (!tokensAreValid(inputTokens)) {
+                System.out.println("Error");
+                getValidUserInput(board, shipLength);
+            }
+
+
+            return convertValidTokensToBoardCoordsX1Y1X2Y2(inputTokens);
+
+        }
+
+
+        private static int[] convertValidTokensToBoardCoordsX1Y1X2Y2(String[] inputTokens) {
+            int[] boardCoords = new int[inputTokens.length];
+            int Y1 = inputTokens[0].charAt(0) - 65;
+            int Y2 = inputTokens[2].charAt(0) - 65;
+            int X1;
+            int X2;
+            if (Objects.equals(inputTokens[1], "10")) {
+                X1 = 9;
+            } else {
+                X1 = inputTokens[1].charAt(0) - 49;
+            }
+            if (Objects.equals(inputTokens[3], "10")) {
+                X2 = 9;
+            } else {
+                X2 = inputTokens[3].charAt(0) - 49;
+            }
+            boardCoords[0] = X1;
+            boardCoords[1] = Y1;
+            boardCoords[2] = X2;
+            boardCoords[3] = Y2;
+
+            return boardCoords;
+        }
+
+        private static boolean tokensAreValid(String[] inputTokens) {
+            String[] setOfValidInputsX = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+            String[] setOfValidInputsY = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+            if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[0])) {
+                return false;
+            } else if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[2])) {
+                return false;
+            } else if (!Arrays.asList(setOfValidInputsX).contains(inputTokens[1])) {
+                return false;
+            } else return Arrays.asList(setOfValidInputsX).contains(inputTokens[3]);
+        }
+
+        private static String[] tokenizeTheInput(String input) {
+            return input.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)+");
+        }
+
+        private static String[] trimWhitespace(String[] input) {
+            String[] trimmedArray = new String[4];
+            /* deal with inputs of length 2 */
+            for (int i = 0; i < input.length; i++) {
+                trimmedArray[i] = input[i].trim();
+            }
+            return trimmedArray;
+        }
+    }
+  learner_created: true
+- name: src/battleship/utils/ShipPlacer.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+    import battleship.enums.ShipDirection;
+
+    import java.util.Arrays;
+
+    public class ShipPlacer {
+        private ShipPlacer() {
+        }
+
+        public static Board placeShipOnBoard(int[] userInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+            ShipDirection shipDirection = ShipPlacementValidation.calculateShipDirection(userInputBoardCoordsX1Y1X2Y2, shipLength);
+
+            System.out.println(Arrays.toString(userInputBoardCoordsX1Y1X2Y2));
+
+            for (int i = 0; i < shipLength; i++) {
+                if (shipDirection.equals(ShipDirection.East)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] + i][userInputBoardCoordsX1Y1X2Y2[1]] = "0";
+                } else if (shipDirection.equals(ShipDirection.West)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] - i][userInputBoardCoordsX1Y1X2Y2[1]] = "0";
+                } else if (shipDirection.equals(ShipDirection.North)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] - i] = "0";
+                } else if (shipDirection.equals(ShipDirection.South)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] + i] = "0";
+                } else if (shipDirection.equals(ShipDirection.NorthEast)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] + i][userInputBoardCoordsX1Y1X2Y2[1] - i] = "0";
+                } else if (shipDirection.equals(ShipDirection.NorthWest)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] - i][userInputBoardCoordsX1Y1X2Y2[1] - i] = "0";
+                } else if (shipDirection.equals(ShipDirection.SouthEast)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] + i][userInputBoardCoordsX1Y1X2Y2[1] + i] = "0";
+                } else if (shipDirection.equals(ShipDirection.SouthWest)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] - i][userInputBoardCoordsX1Y1X2Y2[1] + i] = "0";
+                }
+            }
+            return board;
+        }
+    }
+  learner_created: true
+- name: src/battleship/enums/ShipDirection.java
+  visible: true
+  text: |
+    package battleship.enums;
+
+    public enum ShipDirection {
+        East,
+        West,
+        South,
+        North,
+        SouthEast,
+        SouthWest,
+        NorthEast,
+        NorthWest,
+        Invalid
+    }
+  learner_created: true
+- name: src/battleship/GameInstance.java
+  visible: true
+  text: |
+    package battleship;
+
+    import battleship.board.Board;
+    import battleship.utils.GameSetupUtils;
+
+    import javax.management.relation.RoleNotFoundException;
+
+    public class GameInstance {
+
+        Board board;
+
+        public GameInstance() {
+        }
+
+        public void startGame() throws RoleNotFoundException {
+            this.board = new Board();
+            GameSetupUtils.placeAllShipsOnBoard(this.board);
+        }
+    }
+  learner_created: true
+- name: src/battleship/board/Board.java
+  visible: true
+  text: |
+    package battleship.board;
+
+    public class Board {
+
+        public String[][] board;
+
+        public Board() {
+            initBoard();
+        }
+
+        public void initBoard() {
+            this.board = new String[10][10];
+            for (int i = 0; i < this.board.length; i++) {
+                for (int j = 0; j < this.board[0].length; j++) {
+                    this.board[i][j] = "~";
+                }
+            }
+        }
+
+        public void displayBoard() {
+            System.out.println("  1 2 3 4 5 6 7 8 9 10");
+            for (int i = 0; i < this.board.length; i++) {
+                if (i != 0) {
+                    System.out.println();
+                }
+                for (int j = 0; j < this.board.length; j++) {
+                    if (j == 0) {
+                        System.out.print((char) (i + 65));
+                    }
+                    System.out.print(" " + board[j][i]);
+                }
+            }
+        }
+
+    }
+  learner_created: true
+- name: src/battleship/utils/ShipPlacementValidation.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+    import battleship.enums.ShipDirection;
+
+    public class ShipPlacementValidation {
+        private ShipPlacementValidation() {
+        }
+
+        public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+
+            if (!ValidShipLengthAndDirection(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+                System.out.println("Error! Wrong ship location! Try again:\n");
+                return false;
+            }
+            if (!ShipIsInBounds(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+                System.out.println("Error! Wrong ship location! Try again:\n");
+                return false;
+            }
+            if (!ValidShipNotObstructedByExistingShip(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+                System.out.println("Error! You placed it too close to another one. Try again:\n");
+                return false;
+            }
+            return true;
+        }
+
+        private static boolean ValidShipNotObstructedByExistingShip(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+            ShipDirection shipDirection = ShipPlacementValidation.calculateShipDirection(UserInputBoardCoordsX1Y1X2Y2, shipLength);
+
+
+            for (int i = 0; i < shipLength; i++) {
+                if (shipDirection.equals(ShipDirection.East)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] + i][UserInputBoardCoordsX1Y1X2Y2[1]].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.West)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] - i][UserInputBoardCoordsX1Y1X2Y2[1]].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.North)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0]][UserInputBoardCoordsX1Y1X2Y2[1] - i].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.South)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0]][UserInputBoardCoordsX1Y1X2Y2[1] + i].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.NorthEast)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] + i][UserInputBoardCoordsX1Y1X2Y2[1] - i].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.NorthWest)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] - i][UserInputBoardCoordsX1Y1X2Y2[1] - i].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.SouthEast)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] + i][UserInputBoardCoordsX1Y1X2Y2[1] + i].equals("~")) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.SouthWest)) {
+                    if (!board.board[UserInputBoardCoordsX1Y1X2Y2[0] - i][UserInputBoardCoordsX1Y1X2Y2[1] + i].equals("~")) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private static boolean ShipIsInBounds(int[] userInputBoardCoordinatesX1Y1X2Y2, Board board, int shipLength) {
+            for (int i = 0; i < userInputBoardCoordinatesX1Y1X2Y2.length; i++) {
+                if (userInputBoardCoordinatesX1Y1X2Y2[i] > 9 || userInputBoardCoordinatesX1Y1X2Y2[i] < 0) {
+                    System.out.println("Ship not in bounds");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static boolean ValidShipLengthAndDirection(int[] userInput, Board board, int shipLength) {
+
+            if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3])) {
+                return true;
+            } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3])) {
+                return true;
+            } else if (userInput[0] == userInput[2] && (userInput[1] == userInput[3] + (shipLength - 1))) {
+                return true;
+            } else if (userInput[0] == userInput[2] && (userInput[1] == userInput[3] - (shipLength - 1))) {
+                return true;
+            } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
+                return true;
+            } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
+                return true;
+            } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
+                return true;
+            } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
+                return true;
+            }
+            return false;
+        }
+
+
+        public static ShipDirection calculateShipDirection(int[] userInput, int shipLength) {
+            /* shipLength is a helper function */
+            if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3])) {
+                return ShipDirection.East;
+            } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3])) {
+                return ShipDirection.West;
+            } else if (userInput[0] == userInput[2] && (userInput[1] == userInput[3] + (shipLength - 1))) {
+                return ShipDirection.North;
+            } else if (userInput[0] == userInput[2] && (userInput[1] == userInput[3] - (shipLength - 1))) {
+                return ShipDirection.South;
+            } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
+                return ShipDirection.SouthEast;
+            } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] - (shipLength - 1))) {
+                return ShipDirection.SouthWest;
+            } else if (userInput[0] == userInput[2] - (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
+                return ShipDirection.NorthEast;
+            } else if (userInput[0] == userInput[2] + (shipLength - 1) && (userInput[1] == userInput[3] + (shipLength - 1))) {
+                return ShipDirection.NorthWest;
+            }
+            return ShipDirection.Invalid;
+        }
+
+    }
+  learner_created: true
+- name: src/battleship/utils/GameUtils.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+
+    public class GameSetupUtils {
+        private GameSetupUtils() {
+
+        }
+
+        public static Board placeAllShipsOnBoard(Board board) {
+            board.displayBoard();
+            placeAircraftCarrierMessage();
+            board = initShip(board, 5);
+            board.displayBoard();
+            placeBattleshipMessage();
+            board = initShip(board, 4);
+            board.displayBoard();
+            placeSubmarineMessage();
+            board = initShip(board, 3);
+            board.displayBoard();
+            placeCruiserMessage();
+            board = initShip(board, 3);
+            board.displayBoard();
+            placeDestroyerMessage();
+            board = initShip(board, 2);
+            board.displayBoard();
+
+            return board;
+        }
+
+        private static Board initShip(Board board, int shipLength) {
+
+            int[] UserInputBoardCoordsX1Y1X2Y2 = UserInput.getValidUserInput(board, shipLength);
+
+            if (!ShipPlacementValidation.isValidShipPlacement(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+                initShip(board, shipLength);
+            }
+            ShipPlacer.placeShipOnBoard(UserInputBoardCoordsX1Y1X2Y2, board, shipLength);
+
+            return board;
+        }
+
+        private static void placeAircraftCarrierMessage() {
+            System.out.println("\n\nEnter the coordinates of the Aircraft Carrier (5 cells):\n");
+        }
+
+        private static void placeBattleshipMessage() {
+            System.out.println("\n\nEnter the coordinates of the Battleship (4 cells):\n");
+        }
+
+        private static void placeSubmarineMessage() {
+            System.out.println("Enter the coordinates of the Submarine (3 cells):\n");
+        }
+
+        private static void placeCruiserMessage() {
+            System.out.println("\n\nEnter the coordinates of the Cruiser (3 cells):\n");
+        }
+
+        private static void placeDestroyerMessage() {
+            System.out.println("\n\nEnter the coordinates of the Destroyer (2 cells):\n");
+        }
+    }
+  learner_created: true
+- name: test/battleship/utils/GameSetupUtilsTest.java
+  visible: true
+  text: |-
+    package battleship.utils;
+
+    import junit.framework.TestCase;
+
+    public class GameSetupUtilsTest extends TestCase {
+
+    }
+  learner_created: false
+- name: test/battleship/utils/UserInputTest.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import junit.framework.TestCase;
+
+    public class UserInputTest extends TestCase {
+
+        public void testGetValidUserInput() {
+
+        }
+    }
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/10595#comment
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    The ship&#39;s cells were not found at the coordinates &quot;F3 F7&quot;
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    1 2 3 4 5 6 7 8 9 10
+    A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+    Enter the coordinates of the Aircraft Carrier (5 cells):
+
+    &gt; F3 F7
+
+    [2, 5, 6, 5]
+      1 2 3 4 5 6 7 8 9 10
+    A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    F ~ ~ 0 0 0 0 0 ~ ~ ~
+    G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+    Enter the coordinates of the Battleship (4 cells):
+  time: Sun, 19 Jun 2022 19:39:20 UTC
+record: 2

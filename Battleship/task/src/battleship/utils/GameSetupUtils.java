@@ -30,12 +30,13 @@ public class GameSetupUtils {
 
     private static Board initShip(Board board, int shipLength) {
 
-        int[] UserInputBoardCoordsX1Y1X2Y2 = UserInput.getValidUserInput(board, shipLength);
+        int[] userInput = UserInput.getValidUserInput();
 
-        if (!ShipPlacementValidation.isValidShipPlacement(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+        if (!ShipPlacementValidation.isValidShipPlacement(userInput, board, shipLength)) {
             initShip(board, shipLength);
         }
-        ShipPlacer.placeShipOnBoard(UserInputBoardCoordsX1Y1X2Y2, board, shipLength);
+
+        ShipPlacer.placeShipOnBoard(userInput, board, shipLength);
 
         return board;
     }
@@ -49,7 +50,7 @@ public class GameSetupUtils {
     }
 
     private static void placeSubmarineMessage() {
-        System.out.println("Enter the coordinates of the Submarine (3 cells):\n");
+        System.out.println("\n\nEnter the coordinates of the Submarine (3 cells):\n");
     }
 
     private static void placeCruiserMessage() {

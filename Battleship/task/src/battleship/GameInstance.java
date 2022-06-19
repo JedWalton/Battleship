@@ -3,7 +3,6 @@ package battleship;
 import battleship.board.Board;
 import battleship.utils.GameSetupUtils;
 
-import javax.management.relation.RoleNotFoundException;
 
 public class GameInstance {
 
@@ -12,7 +11,7 @@ public class GameInstance {
     public GameInstance() {
     }
 
-    public void startGame() throws RoleNotFoundException {
+    public void startGame() {
         this.board = new Board();
         GameSetupUtils.placeAllShipsOnBoard(this.board);
     }
