@@ -294,10 +294,10 @@ files:
 - name: src/battleship/utils/UserInput.java
   visible: true
   learner_created: true
-- name: src/battleship/utils/ShipPlacementValidation.java
+- name: src/battleship/utils/Validation.java
   visible: true
   learner_created: true
-- name: src/battleship/utils/ShipPlacer.java
+- name: src/battleship/utils/ShipUtils.java
   visible: true
   learner_created: true
 - name: src/battleship/utils/GameSetupUtils.java

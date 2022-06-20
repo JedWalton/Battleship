@@ -3,17 +3,13 @@ package battleship.utils;
 import battleship.board.Board;
 import battleship.enums.ShipDirection;
 
-public class ShipPlacementValidation {
-    private ShipPlacementValidation() {
+public class Validation {
+    private Validation() {
     }
 
-    public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
 
-//        if (!ValidShipLengthAndDirection(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
-//            System.out.println("Error! Wrong ship location! Try again:\n");
-//            return false;
-//        }
-//        System.out.println("val placement call");
+
+    public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
 
         /* Valid ship direction */
         if (!validShipDirection(UserInputBoardCoordsX1Y1X2Y2)) {
@@ -42,7 +38,7 @@ public class ShipPlacementValidation {
 
 
     private static boolean ValidNotTooCloseToAnotherShip(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
-        ShipDirection shipDirection = ShipPlacementValidation.calculateShipDirection(UserInputBoardCoordsX1Y1X2Y2);
+        ShipDirection shipDirection = Validation.calculateShipDirection(UserInputBoardCoordsX1Y1X2Y2);
         int x;
         int y;
 
@@ -184,4 +180,14 @@ public class ShipPlacementValidation {
         return ShipDirection.Invalid;
     }
 
+    public static boolean isValidShot(int[] userShotCoordsX1Y1, Board board) {
+        if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("X")) {
+            System.out.println("This tile has already been hit!");
+            return false;
+        } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("M")) {
+            System.out.println("This tile has already missed the ship");
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,7 +1,5 @@
 package battleship.utils;
 
-import battleship.board.Board;
-
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -20,7 +18,7 @@ public class UserInput {
         String[] inputTokens = trimWhitespace(inputTokensUnprocessed);
 
 
-        if (!tokensAreValid(inputTokens)) {
+        if (!shipPlacementTokensAreValid(inputTokens)) {
             System.out.println("Error");
             getValidUserInput();
         }
@@ -38,7 +36,7 @@ public class UserInput {
         String[] inputTokensUnprocessed = tokenizeTheInput(input);
         String[] inputTokens = trimWhitespace(inputTokensUnprocessed);
 
-        if (!tokensAreValid(inputTokens)) {
+        if (!takeAShotTokensValid(inputTokens)) {
             System.out.println("\nError! You entered the wrong coordinates! Try again:\n\n");
             getTakeAShotInput();
         }
@@ -46,6 +44,8 @@ public class UserInput {
         return convertValidTokensToBoardCoordsX1Y1(inputTokens);
 
     }
+
+
 
     private static int[] convertValidTokensToBoardCoordsX1Y1(String[] inputTokens) {
         int[] boardCoords = new int[inputTokens.length];
@@ -85,7 +85,7 @@ public class UserInput {
         return boardCoords;
     }
 
-    private static boolean tokensAreValid(String[] inputTokens) {
+    private static boolean shipPlacementTokensAreValid(String[] inputTokens) {
         String[] setOfValidInputsX = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         String[] setOfValidInputsY = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[0])) {
@@ -95,6 +95,14 @@ public class UserInput {
         } else if (!Arrays.asList(setOfValidInputsX).contains(inputTokens[1])) {
             return false;
         } else return Arrays.asList(setOfValidInputsX).contains(inputTokens[3]);
+    }
+
+    private static boolean takeAShotTokensValid(String[] inputTokens) {
+        String[] setOfValidInputsX = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String[] setOfValidInputsY = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+        if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[0])) {
+            return false;
+        } else return Arrays.asList(setOfValidInputsX).contains(inputTokens[1]);
     }
 
     private static String[] tokenizeTheInput(String input) {

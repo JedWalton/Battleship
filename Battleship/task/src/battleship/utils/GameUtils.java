@@ -32,11 +32,11 @@ public class GameUtils {
 
         int[] userInput = UserInput.getValidUserInput();
 
-        while (!ShipPlacementValidation.isValidShipPlacement(userInput, board, shipLength)) {
+        while (!Validation.isValidShipPlacement(userInput, board, shipLength)) {
             userInput = UserInput.getValidUserInput();
         }
 
-        ShipPlacer.placeShipOnBoard(userInput, board, shipLength);
+        ShipAndShotsUtils.placeShipOnBoard(userInput, board, shipLength);
 
         return board;
     }
@@ -60,4 +60,20 @@ public class GameUtils {
     private static void placeDestroyerMessage() {
         System.out.println("\n\nEnter the coordinates of the Destroyer (2 cells):\n");
     }
+
+    public static Board takeAShot(Board board) {
+        System.out.println("\nTake a shot!\n");
+
+        int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
+
+        while(!Validation.isValidShot(userShotCoordsX1Y1, board)) {
+            userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
+        }
+
+        ShipAndShotsUtils.takeShot(userShotCoordsX1Y1, board);
+
+        return board;
+    }
+
+
 }

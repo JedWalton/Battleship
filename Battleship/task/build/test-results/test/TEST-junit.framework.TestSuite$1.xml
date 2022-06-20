@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="junit.framework.TestSuite$1" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-20T00:10:22" hostname="PC" time="0.001">
+<testsuite name="junit.framework.TestSuite$1" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-20T02:31:51" hostname="PC" time="0.0">
   <properties/>
-  <testcase name="warning" classname="junit.framework.TestSuite$1" time="0.001">
+  <testcase name="warning" classname="junit.framework.TestSuite$1" time="0.0">
     <failure message="junit.framework.AssertionFailedError: No tests found in battleship.utils.GameSetupUtilsTest" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: No tests found in battleship.utils.GameSetupUtilsTest
 	at junit.framework.Assert.fail(Assert.java:57)
 	at junit.framework.TestCase.fail(TestCase.java:227)

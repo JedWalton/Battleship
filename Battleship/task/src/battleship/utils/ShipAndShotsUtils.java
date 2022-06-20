@@ -3,14 +3,12 @@ package battleship.utils;
 import battleship.board.Board;
 import battleship.enums.ShipDirection;
 
-import java.util.Arrays;
-
-public class ShipPlacer {
-    private ShipPlacer() {
+public class ShipAndShotsUtils {
+    private ShipAndShotsUtils() {
     }
 
     public static Board placeShipOnBoard(int[] userInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
-        ShipDirection shipDirection = ShipPlacementValidation.calculateShipDirection(userInputBoardCoordsX1Y1X2Y2);
+        ShipDirection shipDirection = Validation.calculateShipDirection(userInputBoardCoordsX1Y1X2Y2);
 
 
         for (int i = 0; i < shipLength; i++) {
@@ -23,6 +21,17 @@ public class ShipPlacer {
             } else if (shipDirection.equals(ShipDirection.South)) {
                 board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] + i] = "O";
             }
+        }
+        return board;
+    }
+
+    public static Board takeShot(int[] userShotCoordsX1Y1, Board board) {
+        if(board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
+            board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
+            System.out.println("You missed!\n");
+        } else if(board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("O")) {
+            board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "X";
+            System.out.println("You hit a ship!");
         }
         return board;
     }

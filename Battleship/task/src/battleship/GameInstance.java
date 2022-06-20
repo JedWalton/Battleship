@@ -4,30 +4,33 @@ import battleship.board.Board;
 import battleship.utils.GameUtils;
 import battleship.utils.UserInput;
 
+import static battleship.utils.GameUtils.takeAShot;
+
 
 public class GameInstance {
 
     Board board;
+    int numberOfHits;
 
     public GameInstance() {
+        numberOfHits = 0;
+        startGame();
     }
 
     public void startGame() {
         this.board = new Board();
         GameUtils.placeAllShipsOnBoard(this.board);
-        gameloop();
+        startGameLoop(board);
     }
 
-    private void gameloop() {
-        System.out.println("\n\nThe game starts!\n\n");
 
-
-        while (true) {
+    public void startGameLoop(Board board) {
+        System.out.println("\n\nThe game starts!");
+        int numberOfHits = 0;
+        boolean isGameOver = false;
+        while (!isGameOver) {
+            board = GameUtils.takeAShot(board);
             board.displayBoard();
-//            GameUtils.takeAShot(board);
-            System.out.println("\n\nTake a shot!\n");
-            int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
-
         }
     }
 }
