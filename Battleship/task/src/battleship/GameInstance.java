@@ -36,9 +36,9 @@ public class GameInstance {
         while (!isGameOver) {
             System.out.println();
 //            player1Board.displayBoardWithFogOfWar();
-            this.player1Board.displayInGameView(this.player2Board);
+            this.player1Board.displayInGameView();
             System.out.println("\nPlayer 1, it's your turn:\n");
-            GameUtils.takeAShot(this.player2Board);
+            GameUtils.takeAShot(this.player2Board, this.player1Board);
             if (GameUtils.hasUserWon(this.player2Board)) {
                 isGameOver = true;
                 /* winner = player 1 */
@@ -46,9 +46,9 @@ public class GameInstance {
 
             GameUtils.passTurnToOtherPlayer();
 
-            this.player2Board.displayInGameView(this.player1Board);
+            this.player2Board.displayInGameView();
             System.out.println("\nPlayer 2, it's your turn:\n");
-            GameUtils.takeAShot(player1Board);
+            GameUtils.takeAShot(this.player1Board, this.player2Board);
             if (GameUtils.hasUserWon(player1Board)) {
                 isGameOver = true;
                 /* winner = player 2 */

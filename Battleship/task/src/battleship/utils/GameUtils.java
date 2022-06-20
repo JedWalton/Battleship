@@ -61,7 +61,7 @@ public class GameUtils {
         System.out.println("\n\nEnter the coordinates of the Destroyer (2 cells):\n");
     }
 
-    public static void takeAShot(Board board) {
+    public static void takeAShot(Board board, Board opponentBoard) {
 
         int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
 
@@ -69,7 +69,7 @@ public class GameUtils {
         while (!Validation.isValidShot(userShotCoordsX1Y1, board)) {
             userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
         }
-        ShipAndShotsUtils.takeShot(userShotCoordsX1Y1, board);
+        ShipAndShotsUtils.takeShot(userShotCoordsX1Y1, board, opponentBoard);
 
     }
 
@@ -87,7 +87,7 @@ public class GameUtils {
 
     public static void passTurnToOtherPlayer() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nPress Enter and pass the move to another player");
+        System.out.println("\n\nPress Enter and pass the move to another player");
         scanner.nextLine();
         System.out.println("");
     }
