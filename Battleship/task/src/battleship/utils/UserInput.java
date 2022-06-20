@@ -59,7 +59,6 @@ public class UserInput {
         boardCoords[0] = X1;
         boardCoords[1] = Y1;
 
-        System.out.println(Arrays.toString(boardCoords));
 
         return boardCoords;
     }

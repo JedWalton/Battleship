@@ -381,6 +381,707 @@ files:
         }
     }
   learner_created: false
+- name: src/battleship/utils/Validation.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+    import battleship.enums.ShipDirection;
+
+    import java.util.Arrays;
+
+    public class Validation {
+        private Validation() {
+        }
+
+
+        public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength, String shipName) {
+
+            if (!validShipDirection(UserInputBoardCoordsX1Y1X2Y2)) {
+                System.out.println("Error! Wrong ship location! Try again:\n");
+                return false;
+            }
+            if (!validShipLength(UserInputBoardCoordsX1Y1X2Y2, shipLength)) {
+                System.out.println("Error! Wrong length of the " + shipName + "! Try again:\n");
+                return false;
+            }
+            if (!shipIsInBounds(UserInputBoardCoordsX1Y1X2Y2)) {
+                System.out.println("Error! Wrong ship location! Try again:\n");
+                return false;
+            }
+            if (!ValidNotTooCloseToAnotherShip(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
+                System.out.println("Error! You placed it too close to another one. Try again:\n");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private static boolean ValidNotTooCloseToAnotherShip(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+            ShipDirection shipDirection = Validation.calculateShipDirection(UserInputBoardCoordsX1Y1X2Y2);
+            int x;
+            int y;
+
+            for (int i = 0; i < shipLength; i++) {
+                if (shipDirection.equals(ShipDirection.East)) {
+                    x = UserInputBoardCoordsX1Y1X2Y2[0] + i;
+                    y = UserInputBoardCoordsX1Y1X2Y2[1];
+                    if (!board.board[x][y].equals("~")) {
+                        return false;
+                    } else if (doesSurroundingTilesContainAnotherShip(x, y, board)) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.West)) {
+                    x = UserInputBoardCoordsX1Y1X2Y2[0] - i;
+                    y = UserInputBoardCoordsX1Y1X2Y2[1];
+                    if (!board.board[x][y].equals("~")) {
+                        return false;
+                    } else if (doesSurroundingTilesContainAnotherShip(x, y, board)) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.North)) {
+                    x = UserInputBoardCoordsX1Y1X2Y2[0];
+                    y = UserInputBoardCoordsX1Y1X2Y2[1] - i;
+                    if (!board.board[x][y].equals("~")) {
+                        return false;
+                    } else if (doesSurroundingTilesContainAnotherShip(x, y, board)) {
+                        return false;
+                    }
+                } else if (shipDirection.equals(ShipDirection.South)) {
+                    x = UserInputBoardCoordsX1Y1X2Y2[0];
+                    y = UserInputBoardCoordsX1Y1X2Y2[1] + i;
+                    if (!board.board[x][y].equals("~")) {
+                        return false;
+                    } else if (doesSurroundingTilesContainAnotherShip(x, y, board)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private static boolean doesSurroundingTilesContainAnotherShip(int x, int y, Board board) {
+
+            if (x + 1 < 10) {
+                if (board.board[x + 1][y].equals("O")) {
+                    return true;
+                }
+            }
+            if (y + 1 < 10) {
+                if (board.board[x][y + 1].equals("O")) {
+                    return true;
+                }
+            }
+            if (x - 1 > 0) {
+                if (board.board[x - 1][y].equals("O")) {
+                    return true;
+                }
+            }
+            if (y - 1 > 0) {
+                if (board.board[x][y - 1].equals("O")) {
+                    return true;
+                }
+            }
+            if (x + 1 < 10 && y + 1 < 10) {
+                if (board.board[x + 1][y + 1].equals("O")) {
+                    return true;
+                }
+            }
+            if (x + 1 < 10 && y - 1 > 0) {
+                if (board.board[x + 1][y - 1].equals("O")) {
+                    return true;
+                }
+            }
+            if (x - 1 > 0 && y + 1 < 10) {
+                if (board.board[x - 1][y + 1].equals("O")) {
+                    return true;
+                }
+            }
+            if (x - 1 > 0 && y - 1 > 0) {
+                if (board.board[x - 1][y - 1].equals("O")) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static boolean shipIsInBounds(int[] userInputBoardCoordinatesX1Y1X2Y2) {
+            for (int j : userInputBoardCoordinatesX1Y1X2Y2) {
+                if (j > 9 || j < 0) {
+                    System.out.println("Ship not in bounds");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static boolean validShipLength(int[] userInput, int shipLength) {
+            ShipDirection shipDirection = calculateShipDirection(userInput);
+
+            if (shipDirection.equals(ShipDirection.East)) {
+                if (userInput[0] == userInput[2] - shipLength + 1) {
+                    return true;
+                }
+            }
+            if (shipDirection.equals(ShipDirection.West)) {
+                if (userInput[2] == userInput[0] - shipLength + 1) {
+                    return true;
+                }
+            }
+            if (shipDirection.equals(ShipDirection.North)) {
+                if (userInput[3] == userInput[1] - shipLength + 1) {
+                    return true;
+                }
+            }
+            if (shipDirection.equals(ShipDirection.South)) {
+                return userInput[1] == userInput[3] - shipLength + 1;
+            }
+
+            return false;
+        }
+
+        private static boolean validShipDirection(int[] userInput) {
+            return !calculateShipDirection(userInput).equals(ShipDirection.Invalid);
+        }
+
+
+        public static ShipDirection calculateShipDirection(int[] userInput) {
+            if (userInput[0] < userInput[2] && (userInput[1] == userInput[3])) {
+                return ShipDirection.East;
+            } else if (userInput[0] > userInput[2] && (userInput[1] == userInput[3])) {
+                return ShipDirection.West;
+            } else if (userInput[0] == userInput[2] && (userInput[1] > userInput[3])) {
+                return ShipDirection.North;
+            } else if (userInput[0] == userInput[2] && (userInput[1] < userInput[3])) {
+                return ShipDirection.South;
+            }
+
+            return ShipDirection.Invalid;
+        }
+
+        public static boolean isValidShot(int[] userShotCoordsX1Y1, Board board) {
+    //        if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("X")) {
+    //            System.out.println("This tile has already been hit!");
+    //            return false;
+    //        } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("M")) {
+    //            System.out.println("This tile has already missed the ship");
+    //            return false;
+    //        }
+            return true;
+        }
+    }
+  learner_created: true
+- name: src/battleship/utils/UserInput.java
+  visible: true
+  text: |+
+    package battleship.utils;
+
+    import java.util.Arrays;
+    import java.util.Objects;
+    import java.util.Scanner;
+
+
+    public class UserInput {
+        private UserInput() {
+        }
+
+        public static int[] getValidUserInput() {
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            System.out.println();
+            String[] inputTokensUnprocessed = TokenizeTheInputForShipPlacement(input);
+            String[] inputTokens = trimWhitespaceForShipPlacement(inputTokensUnprocessed);
+
+            if (!shipPlacementTokensAreValid(inputTokens)) {
+                System.out.println("Error");
+                getValidUserInput();
+            }
+
+
+            return convertValidTokensToBoardCoordsX1Y1X2Y2(inputTokens);
+
+        }
+
+        public static int[] getTakeAShotInput() {
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            System.out.println();
+            String[] inputTokensUnprocessed = tokenizeTheInputForTakeAShot(input);
+            String[] inputTokens = trimWhitespaceForTakeAShot(inputTokensUnprocessed);
+
+            while (!takeAShotTokensValid(inputTokens)) {
+                System.out.println("Error! You entered the wrong coordinates! Try again:\n\n");
+                input = scanner.nextLine();
+                System.out.println();
+                inputTokensUnprocessed = tokenizeTheInputForTakeAShot(input);
+                inputTokens = trimWhitespaceForTakeAShot(inputTokensUnprocessed);
+
+            }
+
+            return convertValidTokensToBoardCoordsX1Y1(inputTokens);
+
+        }
+
+
+        private static int[] convertValidTokensToBoardCoordsX1Y1(String[] inputTokens) {
+            int[] boardCoords = new int[inputTokens.length];
+            int Y1 = inputTokens[0].charAt(0) - 65;
+            int X1;
+            if (Objects.equals(inputTokens[1], "10")) {
+                X1 = 9;
+            } else {
+                X1 = inputTokens[1].charAt(0) - 49;
+            }
+            boardCoords[0] = X1;
+            boardCoords[1] = Y1;
+
+            System.out.println(Arrays.toString(boardCoords));
+
+            return boardCoords;
+        }
+
+        private static int[] convertValidTokensToBoardCoordsX1Y1X2Y2(String[] inputTokens) {
+            int[] boardCoords = new int[inputTokens.length];
+            int Y1 = inputTokens[0].charAt(0) - 65;
+            int Y2 = inputTokens[2].charAt(0) - 65;
+            int X1;
+            int X2;
+            if (Objects.equals(inputTokens[1], "10")) {
+                X1 = 9;
+            } else {
+                X1 = inputTokens[1].charAt(0) - 49;
+            }
+            if (Objects.equals(inputTokens[3], "10")) {
+                X2 = 9;
+            } else {
+                X2 = inputTokens[3].charAt(0) - 49;
+            }
+            boardCoords[0] = X1;
+            boardCoords[1] = Y1;
+            boardCoords[2] = X2;
+            boardCoords[3] = Y2;
+
+            return boardCoords;
+        }
+
+        private static boolean shipPlacementTokensAreValid(String[] inputTokens) {
+            String[] setOfValidInputsX = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+            String[] setOfValidInputsY = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+            if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[0])) {
+                return false;
+            } else if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[2])) {
+                return false;
+            } else if (!Arrays.asList(setOfValidInputsX).contains(inputTokens[1])) {
+                return false;
+            } else return Arrays.asList(setOfValidInputsX).contains(inputTokens[3]);
+        }
+
+        private static boolean takeAShotTokensValid(String[] inputTokens) {
+            String[] setOfValidInputsX = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+            String[] setOfValidInputsY = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+            if (!Arrays.asList(setOfValidInputsY).contains(inputTokens[0])) {
+                return false;
+            } else return Arrays.asList(setOfValidInputsX).contains(inputTokens[1]);
+        }
+
+        private static String[] TokenizeTheInputForShipPlacement(String input) {
+            return input.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)+");
+        }
+
+        private static String[] tokenizeTheInputForTakeAShot(String input) {
+            return input.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)+");
+        }
+
+        private static String[] trimWhitespaceForShipPlacement(String[] input) {
+            String[] trimmedArray = new String[4];
+            /* deal with inputs of length 2 */
+            for (int i = 0; i < input.length; i++) {
+                trimmedArray[i] = input[i].trim();
+            }
+            return trimmedArray;
+        }
+
+        private static String[] trimWhitespaceForTakeAShot(String[] input) {
+            String[] trimmedArray = new String[2];
+            /* deal with inputs of length 2 */
+            for (int i = 0; i < input.length; i++) {
+                trimmedArray[i] = input[i].trim();
+            }
+            return trimmedArray;
+        }
+    }
+
+  learner_created: true
+- name: src/battleship/utils/GameUtils.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+
+    public class GameUtils {
+        private GameUtils() {
+
+        }
+
+        public static void placeAllShipsOnBoard(Board board) {
+            board.displayBoardWithShips();
+            placeAircraftCarrierMessage();
+            initShip(board, 5, "Aircraft Carrier");
+            board.displayBoardWithShips();
+            placeBattleshipMessage();
+            initShip(board, 4, "Battleship");
+            board.displayBoardWithShips();
+            placeSubmarineMessage();
+            initShip(board, 3, "Submarine");
+            board.displayBoardWithShips();
+            placeCruiserMessage();
+            initShip(board, 3, "Cruiser");
+            board.displayBoardWithShips();
+            placeDestroyerMessage();
+            initShip(board, 2, "Destroyer");
+            board.displayBoardWithShips();
+
+        }
+
+        private static void initShip(Board board, int shipLength, String shipName) {
+
+            int[] userInput = UserInput.getValidUserInput();
+
+            while (!Validation.isValidShipPlacement(userInput, board, shipLength, shipName)) {
+                userInput = UserInput.getValidUserInput();
+            }
+
+            ShipAndShotsUtils.placeShipOnBoard(userInput, board, shipLength);
+
+        }
+
+        private static void placeAircraftCarrierMessage() {
+            System.out.println("\n\nEnter the coordinates of the Aircraft Carrier (5 cells):\n");
+        }
+
+        private static void placeBattleshipMessage() {
+            System.out.println("\n\nEnter the coordinates of the Battleship (4 cells):\n");
+        }
+
+        private static void placeSubmarineMessage() {
+            System.out.println("\n\nEnter the coordinates of the Submarine (3 cells):\n");
+        }
+
+        private static void placeCruiserMessage() {
+            System.out.println("\n\nEnter the coordinates of the Cruiser (3 cells):\n");
+        }
+
+        private static void placeDestroyerMessage() {
+            System.out.println("\n\nEnter the coordinates of the Destroyer (2 cells):\n");
+        }
+
+        public static void takeAShot(Board board) {
+            System.out.println("\nTake a shot!\n");
+
+            int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
+
+
+            while (!Validation.isValidShot(userShotCoordsX1Y1, board)) {
+                userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
+            }
+            ShipAndShotsUtils.takeShot(userShotCoordsX1Y1, board);
+
+        }
+
+        public static boolean hasUserWon(Board board) {
+            int totalHitCount = 0;
+            for (int i = 0; i < board.board.length; i++) {
+                for (int j = 0; j < board.board.length; j++) {
+                    if(board.board[j][i].equals("X")){
+                        totalHitCount += 1;
+                    }
+                }
+            }
+            if(totalHitCount == 17) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+  learner_created: true
+- name: src/battleship/enums/ShipDirection.java
+  visible: true
+  text: |
+    package battleship.enums;
+
+    public enum ShipDirection {
+        East,
+        West,
+        South,
+        North,
+        SouthEast,
+        SouthWest,
+        NorthEast,
+        NorthWest,
+        Invalid
+    }
+  learner_created: true
+- name: src/battleship/GameInstance.java
+  visible: true
+  text: |
+    package battleship;
+
+    import battleship.board.Board;
+    import battleship.utils.GameUtils;
+
+
+    public class GameInstance {
+
+        Board board;
+
+        public GameInstance() {
+            startGame();
+        }
+
+        public void startGame() {
+            this.board = new Board();
+            GameUtils.placeAllShipsOnBoard(this.board);
+            startGameLoop(board);
+        }
+
+        public void startGameLoop(Board board) {
+            System.out.println("\n\nThe game starts!\n");
+            boolean isGameOver = false;
+            while (!isGameOver) {
+                System.out.println();
+                board.displayBoardWithFogOfWar();
+                GameUtils.takeAShot(board);
+                if (GameUtils.hasUserWon(board)) {
+                    isGameOver = true;
+                }
+            }
+        }
+    }
+  learner_created: true
+- name: src/battleship/board/Board.java
+  visible: true
+  text: |
+    package battleship.board;
+
+    public class Board {
+
+        public String[][] board;
+
+        public Board() {
+            initBoard();
+        }
+
+        public void initBoard() {
+            this.board = new String[10][10];
+            for (int i = 0; i < this.board.length; i++) {
+                for (int j = 0; j < this.board[0].length; j++) {
+                    this.board[i][j] = "~";
+                }
+            }
+        }
+
+        public void displayBoardWithShips() {
+            System.out.println("  1 2 3 4 5 6 7 8 9 10");
+            for (int i = 0; i < this.board.length; i++) {
+                if (i != 0) {
+                    System.out.println();
+                }
+                for (int j = 0; j < this.board.length; j++) {
+                    if (j == 0) {
+                        System.out.print((char) (i + 65));
+                    }
+                    System.out.print(" " + board[j][i]);
+                }
+            }
+        }
+
+        public void displayBoardWithFogOfWar() {
+            System.out.println("  1 2 3 4 5 6 7 8 9 10");
+            for (int i = 0; i < this.board.length; i++) {
+                if (i != 0) {
+                    System.out.println();
+                }
+                for (int j = 0; j < this.board.length; j++) {
+                    if (j == 0) {
+                        System.out.print((char) (i + 65));
+                    }
+                    if(!board[j][i].equals("O")) {
+                        System.out.print(" " + board[j][i]);
+                    } else  {
+                        System.out.print(" ~");
+                    }
+                }
+            }
+        }
+    }
+  learner_created: true
+- name: src/battleship/utils/ShipAndShotsUtils.java
+  visible: true
+  text: |
+    package battleship.utils;
+
+    import battleship.board.Board;
+    import battleship.enums.ShipDirection;
+
+    public class ShipAndShotsUtils {
+        private ShipAndShotsUtils() {
+        }
+
+        public static void placeShipOnBoard(int[] userInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+            ShipDirection shipDirection = Validation.calculateShipDirection(userInputBoardCoordsX1Y1X2Y2);
+
+            for (int i = 0; i < shipLength; i++) {
+                if (shipDirection.equals(ShipDirection.East)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] + i][userInputBoardCoordsX1Y1X2Y2[1]] = "O";
+                } else if (shipDirection.equals(ShipDirection.West)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0] - i][userInputBoardCoordsX1Y1X2Y2[1]] = "O";
+                } else if (shipDirection.equals(ShipDirection.North)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] - i] = "O";
+                } else if (shipDirection.equals(ShipDirection.South)) {
+                    board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] + i] = "O";
+                }
+            }
+        }
+
+        public static void takeShot(int[] userShotCoordsX1Y1, Board board) {
+            if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
+                board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
+                System.out.println("\nYou missed! Try again:\n");
+            } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("O")) {
+                board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "X";
+                if (didShipGetSunk(userShotCoordsX1Y1, board)) {
+                    if (GameUtils.hasUserWon(board)) {
+                        board.displayBoardWithFogOfWar();
+                        System.out.println("\n\nYou sank the last ship. You won. Congratulations!");
+                    } else {
+                        System.out.println("You sank a ship! Specify a new target");
+                    }
+                } else {
+                    System.out.println("\nYou hit a ship! Try again:");
+                }
+            }
+        }
+
+        /* Check all squares around this tile. IF only surrounded by X, M or ~ then ship must be sunk */
+
+        /* Modify the placement validation methods. */
+        private static boolean didShipGetSunk(int[] userShotCoordsX1Y1, Board board) {
+            /*loop through the length of the ship*/
+            // check up, check down, check left, check right.
+            if (!checkSurroundingTilesForO(userShotCoordsX1Y1[0], userShotCoordsX1Y1[1], board)) {
+                return true;
+            }
+            return false;
+        }
+
+        private static boolean checkSurroundingTilesForO(int x, int y, Board board) {
+            /* if does not contain at least "O" in its immediate surrounding then it must be invalid */
+            /* As all ships are spaced out by at least one */
+            boolean[] trueIfZeroPresent = new boolean[4];
+            if (x + 1 < 10) {
+                if (board.board[x + 1][y].equals("O")) {
+                    trueIfZeroPresent[0] = true;
+                }
+            }
+            if (y + 1 < 10) {
+                if (board.board[x][y + 1].equals("O")) {
+                    trueIfZeroPresent[1] = true;
+                }
+            }
+            if (x - 1 > 0) {
+                if (board.board[x - 1][y].equals("O")) {
+                    trueIfZeroPresent[2] = true;
+                }
+            }
+            if (y - 1 > 0) {
+                if (board.board[x][y - 1].equals("O")) {
+                    trueIfZeroPresent[3] = true;
+                }
+            }
+            for (boolean side : trueIfZeroPresent) {
+                if (side) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10598#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #1\n\nAt the start of the game the upper field should\
+    \ be empty\n\nPlease find below the output of your program during this failed\
+    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
+    \ input line.\n\n---\n\n[last 250 lines of output are shown, 18 skipped]\n  1\
+    \ 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O O ~\
+    \ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nJ\
+    \ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nEnter the coordinates of the Battleship (4 cells):\n\n\
+    &gt; A1 D1\n\n  1 2 3 4 5 6 7 8 9 10\nA O ~ ~ ~ ~ ~ ~ ~ ~ ~\nB O ~ ~ ~ ~ ~ ~ ~\
+    \ ~ ~\nC O ~ ~ ~ ~ ~ ~ ~ ~ ~\nD O ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF\
+    \ ~ ~ O O O O O ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nEnter the coordinates of the Submarine\
+    \ (3 cells):\n\n&gt; J7 J10\n\nError! Wrong length of the Submarine! Try again:\n\
+    \n&gt; J10 J8\n\n  1 2 3 4 5 6 7 8 9 10\nA O ~ ~ ~ ~ ~ ~ ~ ~ ~\nB O ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~\nC O ~ ~ ~ ~ ~ ~ ~ ~ ~\nD O ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
+    F ~ ~ O O O O O ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ O O O\n\nEnter the coordinates of the Cruiser (3\
+    \ cells):\n\n&gt; B9 D8\n\nError! Wrong ship location! Try again:\n\n&gt; B9 D9\n\
+    \n  1 2 3 4 5 6 7 8 9 10\nA O ~ ~ ~ ~ ~ ~ ~ ~ ~\nB O ~ ~ ~ ~ ~ ~ ~ O ~\nC O ~\
+    \ ~ ~ ~ ~ ~ ~ O ~\nD O ~ ~ ~ ~ ~ ~ ~ O ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O\
+    \ O ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
+    J ~ ~ ~ ~ ~ ~ ~ O O O\n\nEnter the coordinates of the Destroyer (2 cells):\n\n\
+    &gt; E6 D6\n\nError! You placed it too close to another one. Try again:\n\n&gt;\
+    \ I2 J2\n\n  1 2 3 4 5 6 7 8 9 10\nA O ~ ~ ~ ~ ~ ~ ~ ~ ~\nB O ~ ~ ~ ~ ~ ~ ~ O\
+    \ ~\nC O ~ ~ ~ ~ ~ ~ ~ O ~\nD O ~ ~ ~ ~ ~ ~ ~ O ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~\
+    \ ~ O O O O O ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ O ~ ~ ~\
+    \ ~ ~ ~ ~ ~\nJ ~ O ~ ~ ~ ~ ~ O O O\nPress Enter and pass the move to another player\n\
+    &gt; \n\nPlayer 2, place your ships on the game field\n\n  1 2 3 4 5 6 7 8 9 10\n\
+    A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~\
+    \ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\n\
+    Enter the coordinates of the Aircraft Carrier (5 cells):\n\n&gt; H2 H6\n\n  1\
+    \ 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ ~ ~ ~ ~ ~ ~\
+    \ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ O O O O O ~ ~ ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nJ\
+    \ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nEnter the coordinates of the Battleship (4 cells):\n\n\
+    &gt; F3 F6\n\n  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~\
+    \ ~ ~\nC ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF\
+    \ ~ ~ O O O O ~ ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ O O O O O ~ ~ ~ ~\nI ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nEnter the coordinates of the Submarine\
+    \ (3 cells):\n\n&gt; H8 F8\n\n  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
+    B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O ~ O ~ ~\nG ~ ~ ~ ~ ~ ~ ~ O ~ ~\nH ~ O O O O O ~ O\
+    \ ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nEnter the coordinates of\
+    \ the Cruiser (3 cells):\n\n&gt; D4 D6\n\n  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ O O O ~ ~ ~\
+    \ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O ~ O ~ ~\nG ~ ~ ~ ~ ~ ~ ~ O ~ ~\nH ~\
+    \ O O O O O ~ O ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nEnter the\
+    \ coordinates of the Destroyer (2 cells):\n\n&gt; D8 C8\n\n  1 2 3 4 5 6 7 8 9\
+    \ 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~ ~ ~ ~ O ~ ~\nD ~\
+    \ ~ ~ O O O ~ O ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O ~ O ~ ~\nG ~ ~ ~ ~ ~\
+    \ ~ ~ O ~ ~\nH ~ O O O O O ~ O ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~\
+    \ ~\nPress Enter and pass the move to another player\n&gt; \n\n\n\nThe game starts!\n\
+    \n  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~\
+    \ ~ ~ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
+    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n  1 2 3 4 5 6 7 8 9 10\nA O ~ ~\
+    \ ~ ~ ~ ~ ~ ~ ~\nB O ~ ~ ~ ~ ~ ~ ~ O ~\nC O ~ ~ ~ ~ ~ ~ ~ O ~\nD O ~ ~ ~ ~ ~ ~\
+    \ ~ O ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O O ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
+    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ O ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ O ~ ~ ~ ~ ~ O O O\n\nPlayer\
+    \ 1, it&#39;s your turn:\n\n&gt; I3\n\n\nYou missed! Try again:\n\n\nPress Enter\
+    \ and pass the move to another player\n&gt; \n\n  1 2 3 4 5 6 7 8 9 10\nA ~ ~\
+    \ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nD ~ ~ ~ ~ ~ ~\
+    \ ~ ~ ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
+    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n\
+    \  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~\
+    \ ~ ~ ~ ~ O ~ ~\nD ~ ~ ~ O O O ~ O ~ ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ O O O O ~\
+    \ O ~ ~\nG ~ ~ ~ ~ ~ ~ ~ O ~ ~\nH ~ O O O O O ~ O ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\n\
+    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nPlayer 2, it&#39;s your turn:"
+  time: Mon, 20 Jun 2022 19:16:24 UTC
 record: -1

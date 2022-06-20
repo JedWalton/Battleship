@@ -2,6 +2,8 @@ package battleship.utils;
 
 import battleship.board.Board;
 
+import java.util.Scanner;
+
 public class GameUtils {
     private GameUtils() {
 
@@ -60,7 +62,6 @@ public class GameUtils {
     }
 
     public static void takeAShot(Board board) {
-        System.out.println("\nTake a shot!\n");
 
         int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
 
@@ -81,10 +82,13 @@ public class GameUtils {
                 }
             }
         }
-        if(totalHitCount == 17) {
-            return true;
-        } else {
-            return false;
-        }
+        return totalHitCount == 17;
+    }
+
+    public static void passTurnToOtherPlayer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nPress Enter and pass the move to another player");
+        scanner.nextLine();
+        System.out.println("");
     }
 }

@@ -31,7 +31,7 @@ public class ShipAndShotsUtils {
             board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "X";
             if (didShipGetSunk(userShotCoordsX1Y1, board)) {
                 if (GameUtils.hasUserWon(board)) {
-                    board.displayBoardWithFogOfWar();
+                    board.displayBoardWithFogOfWar(board);
                     System.out.println("\n\nYou sank the last ship. You won. Congratulations!");
                 } else {
                     System.out.println("You sank a ship! Specify a new target");
