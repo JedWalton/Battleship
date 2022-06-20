@@ -26,6 +26,7 @@ public class ShipAndShotsUtils {
     public static void takeShot(int[] userShotCoordsX1Y1, Board playerBoard, Board opponentBoard) {
         if (playerBoard.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
             playerBoard.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
+            opponentBoard.opponentsFogOfWarBoard[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
             System.out.println("\nYou missed! Try again:\n");
         } else if (playerBoard.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("O")) {
             playerBoard.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "X";
@@ -35,7 +36,7 @@ public class ShipAndShotsUtils {
                     playerBoard.displayBoardWithFogOfWar();
                     System.out.println("\n\nYou sank the last ship. You won. Congratulations!");
                 } else {
-                    System.out.println("You sank a ship! Specify a new target");
+                    System.out.println("You sank a ship!");
                 }
             } else {
                 System.out.println("\nYou hit a ship!");
