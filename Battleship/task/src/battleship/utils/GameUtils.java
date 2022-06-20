@@ -2,14 +2,12 @@ package battleship.utils;
 
 import battleship.board.Board;
 
-import java.util.Arrays;
-
 public class GameUtils {
     private GameUtils() {
 
     }
 
-    public static Board placeAllShipsOnBoard(Board board) {
+    public static void placeAllShipsOnBoard(Board board) {
         board.displayBoard();
         placeAircraftCarrierMessage();
         initShip(board, 5, "Aircraft Carrier");
@@ -27,10 +25,9 @@ public class GameUtils {
         initShip(board, 2, "Destroyer");
         board.displayBoard();
 
-        return board;
     }
 
-    private static Board initShip(Board board, int shipLength, String shipName) {
+    private static void initShip(Board board, int shipLength, String shipName) {
 
         int[] userInput = UserInput.getValidUserInput();
 
@@ -40,7 +37,6 @@ public class GameUtils {
 
         ShipAndShotsUtils.placeShipOnBoard(userInput, board, shipLength);
 
-        return board;
     }
 
     private static void placeAircraftCarrierMessage() {
@@ -69,7 +65,7 @@ public class GameUtils {
         int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
 
 
-        while(!Validation.isValidShot(userShotCoordsX1Y1, board)) {
+        while (!Validation.isValidShot(userShotCoordsX1Y1, board)) {
             userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
         }
 

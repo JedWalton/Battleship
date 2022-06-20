@@ -7,9 +7,8 @@ public class ShipAndShotsUtils {
     private ShipAndShotsUtils() {
     }
 
-    public static Board placeShipOnBoard(int[] userInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+    public static void placeShipOnBoard(int[] userInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
         ShipDirection shipDirection = Validation.calculateShipDirection(userInputBoardCoordsX1Y1X2Y2);
-
 
         for (int i = 0; i < shipLength; i++) {
             if (shipDirection.equals(ShipDirection.East)) {
@@ -22,18 +21,15 @@ public class ShipAndShotsUtils {
                 board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] + i] = "O";
             }
         }
-        return board;
     }
 
-    public static Board takeShot(int[] userShotCoordsX1Y1, Board board) {
-        System.out.println("Hello");
-        if(board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
+    public static void takeShot(int[] userShotCoordsX1Y1, Board board) {
+        if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
             board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
             System.out.println("You missed!\n");
-        } else if(board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("O")) {
+        } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("O")) {
             board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "X";
             System.out.println("You hit a ship!");
         }
-        return board;
     }
 }

@@ -10,26 +10,20 @@ public class Validation {
     }
 
 
-
     public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength, String shipName) {
 
-        /* Valid ship direction */
         if (!validShipDirection(UserInputBoardCoordsX1Y1X2Y2)) {
             System.out.println("Error! Wrong ship location! Try again:\n");
             return false;
         }
-//        /* Valid ship length */
         if (!validShipLength(UserInputBoardCoordsX1Y1X2Y2, shipLength)) {
             System.out.println("Error! Wrong length of the " + shipName + "! Try again:\n");
             return false;
         }
-//
-//        /* in bounds */
         if (!shipIsInBounds(UserInputBoardCoordsX1Y1X2Y2)) {
             System.out.println("Error! Wrong ship location! Try again:\n");
             return false;
         }
-        /* not obstructed */
         if (!ValidNotTooCloseToAnotherShip(UserInputBoardCoordsX1Y1X2Y2, board, shipLength)) {
             System.out.println("Error! You placed it too close to another one. Try again:\n");
             return false;
@@ -128,8 +122,8 @@ public class Validation {
     }
 
     private static boolean shipIsInBounds(int[] userInputBoardCoordinatesX1Y1X2Y2) {
-        for (int i = 0; i < userInputBoardCoordinatesX1Y1X2Y2.length; i++) {
-            if (userInputBoardCoordinatesX1Y1X2Y2[i] > 9 || userInputBoardCoordinatesX1Y1X2Y2[i] < 0) {
+        for (int j : userInputBoardCoordinatesX1Y1X2Y2) {
+            if (j > 9 || j < 0) {
                 System.out.println("Ship not in bounds");
                 return false;
             }
@@ -168,7 +162,6 @@ public class Validation {
 
 
     public static ShipDirection calculateShipDirection(int[] userInput) {
-        /* shipLength is a helper function */
         if (userInput[0] < userInput[2] && (userInput[1] == userInput[3])) {
             return ShipDirection.East;
         } else if (userInput[0] > userInput[2] && (userInput[1] == userInput[3])) {
@@ -183,8 +176,6 @@ public class Validation {
     }
 
     public static boolean isValidShot(int[] userShotCoordsX1Y1, Board board) {
-        System.out.println("isValidShot");
-        System.out.println(Arrays.toString(userShotCoordsX1Y1));
         if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("X")) {
             System.out.println("This tile has already been hit!");
             return false;

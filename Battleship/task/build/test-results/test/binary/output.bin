@@ -110,12 +110,7 @@
 
 > A1
 
-[A, 1]
-[A, 1]
 [0, 0]
-isValidShot
-[0, 0]
-Hello
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10
 A X ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -242,24 +237,17 @@
 
 > M1
 
-[M, 1]
-[M, 1]
 5Error! You entered the wrong coordinates! Try again:
 
 
 > A11
 
-[A, 11]
 5Error! You entered the wrong coordinates! Try again:
 
 
 > E4
 
-[E, 4]
 [3, 4]
-isValidShot
-[3, 4]
-Hello
 You missed!
 
   1 2 3 4 5 6 7 8 9 10
@@ -387,12 +375,7 @@
 
 > E8
 
-[E, 8]
-[E, 8]
 [7, 4]
-isValidShot
-[7, 4]
-Hello
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10
 A O ~ ~ ~ ~ ~ ~ ~ ~ ~

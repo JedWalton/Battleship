@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-20T04:03:48" hostname="PC" time="0.181">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-20T04:08:37" hostname="PC" time="0.174">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.181"/>
+  <testcase name="start" classname="Tests" time="0.174"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
   1 2 3 4 5 6 7 8 9 10
@@ -114,12 +114,7 @@ Take a shot!
 
 > A1
 
-[A, 1]
-[A, 1]
 [0, 0]
-isValidShot
-[0, 0]
-Hello
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10
 A X ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -246,24 +241,17 @@ Take a shot!
 
 > M1
 
-[M, 1]
-[M, 1]
 Error! You entered the wrong coordinates! Try again:
 
 
 > A11
 
-[A, 11]
 Error! You entered the wrong coordinates! Try again:
 
 
 > E4
 
-[E, 4]
 [3, 4]
-isValidShot
-[3, 4]
-Hello
 You missed!
 
   1 2 3 4 5 6 7 8 9 10
@@ -391,12 +379,7 @@ Take a shot!
 
 > E8
 
-[E, 8]
-[E, 8]
 [7, 4]
-isValidShot
-[7, 4]
-Hello
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10
 A O ~ ~ ~ ~ ~ ~ ~ ~ ~
