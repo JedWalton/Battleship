@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
+
 public class UserInput {
     private UserInput() {
     }
@@ -29,7 +30,37 @@ public class UserInput {
 
     }
 
+    public static int[] getTakeAShotInput() {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
 
+        System.out.println();
+        String[] inputTokensUnprocessed = tokenizeTheInput(input);
+        String[] inputTokens = trimWhitespace(inputTokensUnprocessed);
+
+        if (!tokensAreValid(inputTokens)) {
+            System.out.println("\nError! You entered the wrong coordinates! Try again:\n\n");
+            getTakeAShotInput();
+        }
+
+        return convertValidTokensToBoardCoordsX1Y1(inputTokens);
+
+    }
+
+    private static int[] convertValidTokensToBoardCoordsX1Y1(String[] inputTokens) {
+        int[] boardCoords = new int[inputTokens.length];
+        int Y1 = inputTokens[0].charAt(0) - 65;
+        int X1;
+        if (Objects.equals(inputTokens[1], "10")) {
+            X1 = 9;
+        } else {
+            X1 = inputTokens[1].charAt(0) - 49;
+        }
+        boardCoords[0] = X1;
+        boardCoords[1] = Y1;
+
+        return boardCoords;
+    }
     private static int[] convertValidTokensToBoardCoordsX1Y1X2Y2(String[] inputTokens) {
         int[] boardCoords = new int[inputTokens.length];
         int Y1 = inputTokens[0].charAt(0) - 65;
@@ -79,3 +110,4 @@ public class UserInput {
         return trimmedArray;
     }
 }
+

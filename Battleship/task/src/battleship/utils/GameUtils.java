@@ -2,27 +2,27 @@ package battleship.utils;
 
 import battleship.board.Board;
 
-public class GameSetupUtils {
-    private GameSetupUtils() {
+public class GameUtils {
+    private GameUtils() {
 
     }
 
     public static Board placeAllShipsOnBoard(Board board) {
         board.displayBoard();
         placeAircraftCarrierMessage();
-        board = initShip(board, 5);
+        initShip(board, 5);
         board.displayBoard();
         placeBattleshipMessage();
-        board = initShip(board, 4);
+        initShip(board, 4);
         board.displayBoard();
         placeSubmarineMessage();
-        board = initShip(board, 3);
+        initShip(board, 3);
         board.displayBoard();
         placeCruiserMessage();
-        board = initShip(board, 3);
+        initShip(board, 3);
         board.displayBoard();
         placeDestroyerMessage();
-        board = initShip(board, 2);
+        initShip(board, 2);
         board.displayBoard();
 
         return board;
@@ -32,8 +32,8 @@ public class GameSetupUtils {
 
         int[] userInput = UserInput.getValidUserInput();
 
-        if (!ShipPlacementValidation.isValidShipPlacement(userInput, board, shipLength)) {
-            initShip(board, shipLength);
+        while (!ShipPlacementValidation.isValidShipPlacement(userInput, board, shipLength)) {
+            userInput = UserInput.getValidUserInput();
         }
 
         ShipPlacer.placeShipOnBoard(userInput, board, shipLength);

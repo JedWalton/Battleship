@@ -19,7 +19,7 @@ public class ShipPlacer {
             } else if (shipDirection.equals(ShipDirection.West)) {
                 board.board[userInputBoardCoordsX1Y1X2Y2[0] - i][userInputBoardCoordsX1Y1X2Y2[1]] = "O";
             } else if (shipDirection.equals(ShipDirection.North)) {
-                board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] - i + 1] = "O";
+                board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] - i] = "O";
             } else if (shipDirection.equals(ShipDirection.South)) {
                 board.board[userInputBoardCoordsX1Y1X2Y2[0]][userInputBoardCoordsX1Y1X2Y2[1] + i] = "O";
             }
