@@ -1,93 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-20T02:31:51" hostname="PC" time="0.111">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-20T04:03:48" hostname="PC" time="0.181">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.111">
-    <failure message="java.lang.AssertionError: Wrong answer in test #2&#10;&#10;Your program should report an error if there is an input mistake. (Incorrect length of the ship)&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;1 2 3 4 5 6 7 8 9 10&#10;A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;&#10;Enter the coordinates of the Aircraft Carrier (5 cells):&#10;&#10;&gt; J3 J7&#10;&#10;  1 2 3 4 5 6 7 8 9 10&#10;A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~&#10;J ~ ~ O O O O O ~ ~ ~&#10;&#10;Enter the coordinates of the Battleship (4 cells):&#10;&#10;&gt; C8 B8&#10;&#10;not valid length" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #2
-
-Your program should report an error if there is an input mistake. (Incorrect length of the ship)
-
-Please find below the output of your program during this failed test.
-Note that the '&gt;' character indicates the beginning of the input line.
-
----
-
-1 2 3 4 5 6 7 8 9 10
-A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-Enter the coordinates of the Aircraft Carrier (5 cells):
-
-&gt; J3 J7
-
-  1 2 3 4 5 6 7 8 9 10
-A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-J ~ ~ O O O O O ~ ~ ~
-
-Enter the coordinates of the Battleship (4 cells):
-
-&gt; C8 B8
-
-not valid length
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</failure>
-  </testcase>
+  <testcase name="start" classname="Tests" time="0.181"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
   1 2 3 4 5 6 7 8 9 10
@@ -138,7 +52,8 @@ Enter the coordinates of the Submarine (3 cells):
 
 > J7 J10
 
-not valid length
+Error! Wrong length of the Submarine! Try again:
+
 > J10 J8
 
   1 2 3 4 5 6 7 8 9 10
@@ -157,7 +72,8 @@ Enter the coordinates of the Cruiser (3 cells):
 
 > B9 D8
 
-wrong direction of ship
+Error! Wrong ship location! Try again:
+
 > B9 D9
 
   1 2 3 4 5 6 7 8 9 10
@@ -198,6 +114,12 @@ Take a shot!
 
 > A1
 
+[A, 1]
+[A, 1]
+[0, 0]
+isValidShot
+[0, 0]
+Hello
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10
 A X ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -246,7 +168,249 @@ Enter the coordinates of the Battleship (4 cells):
 
 > C8 B8
 
-not valid length
+Error! Wrong length of the Battleship! Try again:
+
+> C8 F8
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Submarine (3 cells):
+
+> A1 C2
+
+Error! Wrong ship location! Try again:
+
+> A1 C1
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ ~ ~ ~ ~ ~ ~
+C O ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Cruiser (3 cells):
+
+> H1 H3
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ ~ ~ ~ ~ ~ ~
+C O ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H O O O ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Destroyer (2 cells):
+
+> G2 E2
+
+Error! Wrong length of the Destroyer! Try again:
+
+> B5 C5
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ O ~ ~ ~ ~ ~
+C O ~ ~ ~ O ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H O O O ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+The game starts!
+
+Take a shot!
+
+> M1
+
+[M, 1]
+[M, 1]
+Error! You entered the wrong coordinates! Try again:
+
+
+> A11
+
+[A, 11]
+Error! You entered the wrong coordinates! Try again:
+
+
+> E4
+
+[E, 4]
+[3, 4]
+isValidShot
+[3, 4]
+Hello
+You missed!
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ O ~ ~ ~ ~ ~
+C O ~ ~ ~ O ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ M ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H O O O ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+Take a shot!
+
+?[1;31m
+Start test 3?[0m
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+Enter the coordinates of the Aircraft Carrier (5 cells):
+
+> J3 J7
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Battleship (4 cells):
+
+> C8 B8
+
+Error! Wrong length of the Battleship! Try again:
+
+> C8 F8
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Submarine (3 cells):
+
+> A1 C2
+
+Error! Wrong ship location! Try again:
+
+> A1 C1
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ ~ ~ ~ ~ ~ ~
+C O ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Cruiser (3 cells):
+
+> H1 H3
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ ~ ~ ~ ~ ~ ~
+C O ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ ~ ~ ~ O ~ ~
+F ~ ~ ~ ~ ~ ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H O O O ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+Enter the coordinates of the Destroyer (2 cells):
+
+> G2 E2
+
+Error! Wrong length of the Destroyer! Try again:
+
+> E5 F5
+
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ ~ ~ ~ ~ ~ ~
+C O ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ O ~ ~ O ~ ~
+F ~ ~ ~ ~ O ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H O O O ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+
+The game starts!
+
+Take a shot!
+
+> E8
+
+[E, 8]
+[E, 8]
+[7, 4]
+isValidShot
+[7, 4]
+Hello
+You hit a ship!
+  1 2 3 4 5 6 7 8 9 10
+A O ~ ~ ~ ~ ~ ~ ~ ~ ~
+B O ~ ~ ~ ~ ~ ~ ~ ~ ~
+C O ~ ~ ~ ~ ~ ~ O ~ ~
+D ~ ~ ~ ~ ~ ~ ~ O ~ ~
+E ~ ~ ~ ~ O ~ ~ X ~ ~
+F ~ ~ ~ ~ O ~ ~ O ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H O O O ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ O O O O O ~ ~ ~
+Take a shot!
+
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

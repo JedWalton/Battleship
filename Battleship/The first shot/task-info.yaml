@@ -680,31 +680,6 @@ files:
         }
     }
   learner_created: true
-- name: test/battleship/utils/GameSetupUtilsTest.java
-  visible: true
-  text: |-
-    package battleship.utils;
-
-    import junit.framework.TestCase;
-
-    public class GameSetupUtilsTest extends TestCase {
-
-    }
-  learner_created: false
-- name: test/battleship/utils/UserInputTest.java
-  visible: true
-  text: |
-    package battleship.utils;
-
-    import junit.framework.TestCase;
-
-    public class UserInputTest extends TestCase {
-
-        public void testGetValidUserInput() {
-
-        }
-    }
-  learner_created: false
 - name: src/battleship/utils/Validation.java
   visible: true
   text: |
@@ -876,50 +851,8 @@ files:
     }
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10595#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #2
-
-    Your program should report an error if there is an input mistake. (Incorrect length of the ship)
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    1 2 3 4 5 6 7 8 9 10
-    A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-    Enter the coordinates of the Aircraft Carrier (5 cells):
-
-    &gt; J3 J7
-
-      1 2 3 4 5 6 7 8 9 10
-    A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    J ~ ~ O O O O O ~ ~ ~
-
-    Enter the coordinates of the Battleship (4 cells):
-
-    &gt; C8 B8
-
-    not valid length
-  time: Mon, 20 Jun 2022 02:31:51 UTC
+  message: Congratulations!
+  time: Mon, 20 Jun 2022 04:03:48 UTC
 record: 2

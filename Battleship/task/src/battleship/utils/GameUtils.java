@@ -2,6 +2,8 @@ package battleship.utils;
 
 import battleship.board.Board;
 
+import java.util.Arrays;
+
 public class GameUtils {
     private GameUtils() {
 
@@ -10,29 +12,29 @@ public class GameUtils {
     public static Board placeAllShipsOnBoard(Board board) {
         board.displayBoard();
         placeAircraftCarrierMessage();
-        initShip(board, 5);
+        initShip(board, 5, "Aircraft Carrier");
         board.displayBoard();
         placeBattleshipMessage();
-        initShip(board, 4);
+        initShip(board, 4, "Battleship");
         board.displayBoard();
         placeSubmarineMessage();
-        initShip(board, 3);
+        initShip(board, 3, "Submarine");
         board.displayBoard();
         placeCruiserMessage();
-        initShip(board, 3);
+        initShip(board, 3, "Cruiser");
         board.displayBoard();
         placeDestroyerMessage();
-        initShip(board, 2);
+        initShip(board, 2, "Destroyer");
         board.displayBoard();
 
         return board;
     }
 
-    private static Board initShip(Board board, int shipLength) {
+    private static Board initShip(Board board, int shipLength, String shipName) {
 
         int[] userInput = UserInput.getValidUserInput();
 
-        while (!Validation.isValidShipPlacement(userInput, board, shipLength)) {
+        while (!Validation.isValidShipPlacement(userInput, board, shipLength, shipName)) {
             userInput = UserInput.getValidUserInput();
         }
 
@@ -65,6 +67,7 @@ public class GameUtils {
         System.out.println("\nTake a shot!\n");
 
         int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
+
 
         while(!Validation.isValidShot(userShotCoordsX1Y1, board)) {
             userShotCoordsX1Y1 = UserInput.getTakeAShotInput();

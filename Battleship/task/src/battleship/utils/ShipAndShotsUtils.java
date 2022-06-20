@@ -26,6 +26,7 @@ public class ShipAndShotsUtils {
     }
 
     public static Board takeShot(int[] userShotCoordsX1Y1, Board board) {
+        System.out.println("Hello");
         if(board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
             board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
             System.out.println("You missed!\n");

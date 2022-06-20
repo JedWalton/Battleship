@@ -3,22 +3,24 @@ package battleship.utils;
 import battleship.board.Board;
 import battleship.enums.ShipDirection;
 
+import java.util.Arrays;
+
 public class Validation {
     private Validation() {
     }
 
 
 
-    public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength) {
+    public static boolean isValidShipPlacement(int[] UserInputBoardCoordsX1Y1X2Y2, Board board, int shipLength, String shipName) {
 
         /* Valid ship direction */
         if (!validShipDirection(UserInputBoardCoordsX1Y1X2Y2)) {
-            System.out.println("wrong direction of ship");
+            System.out.println("Error! Wrong ship location! Try again:\n");
             return false;
         }
 //        /* Valid ship length */
         if (!validShipLength(UserInputBoardCoordsX1Y1X2Y2, shipLength)) {
-            System.out.println("not valid length");
+            System.out.println("Error! Wrong length of the " + shipName + "! Try again:\n");
             return false;
         }
 //
@@ -181,6 +183,8 @@ public class Validation {
     }
 
     public static boolean isValidShot(int[] userShotCoordsX1Y1, Board board) {
+        System.out.println("isValidShot");
+        System.out.println(Arrays.toString(userShotCoordsX1Y1));
         if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("X")) {
             System.out.println("This tile has already been hit!");
             return false;
