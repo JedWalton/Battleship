@@ -42,6 +42,7 @@ public class GameInstance {
             if (GameUtils.hasUserWon(this.player2Board)) {
                 isGameOver = true;
                 /* winner = player 1 */
+                System.out.println("Player 1 Wins!");
             }
 
             GameUtils.passTurnToOtherPlayer();
@@ -51,7 +52,7 @@ public class GameInstance {
             GameUtils.takeAShot(this.player1Board, this.player2Board);
             if (GameUtils.hasUserWon(player1Board)) {
                 isGameOver = true;
-                /* winner = player 2 */
+                System.out.println("Player 2 Wins!");
             }
 
             GameUtils.passTurnToOtherPlayer();

@@ -1012,72 +1012,9 @@ files:
     }
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10598#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #1\n\nIf a player has sunk all enemy ships you should\
-    \ print:\n&quot;You sank the last ship. You won. Congratulations!&quot;\n\nPlease\
-    \ find below the output of your program during this failed test.\nNote that the\
-    \ &#39;&gt;&#39; character indicates the beginning of the input line.\n\n---\n\
-    \n[last 250 lines of output are shown, 1233 skipped]\nPress Enter and pass the\
-    \ move to another player\n&gt; \n\n  1 2 3 4 5 6 7 8 9 10\nA X ~ ~ ~ ~ ~ ~ ~ ~\
-    \ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~ ~ ~ X ~\nE ~\
-    \ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nH ~ ~ ~ ~ ~\
-    \ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n\
-    \  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~\
-    \ ~ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M\
-    \ O ~ M\nG ~ ~ ~ ~ ~ ~ ~ O ~ M\nH ~ O O O O O ~ O ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\n\
-    J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nPlayer 2, it&#39;s your turn:\n\n&gt; J2\n\nYou sank\
-    \ a ship!\n\n\nPress Enter and pass the move to another player\n&gt; \n\n\n  1\
-    \ 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~\
-    \ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M ~\
-    \ ~ M\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\nJ\
-    \ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n  1 2 3 4 5 6 7 8 9 10\nA X ~ ~\
-    \ ~ ~ ~ ~ ~ ~ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~ ~\
-    \ ~ X ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ X ~ ~ ~ ~ ~ O O O\n\nPlayer\
-    \ 1, it&#39;s your turn:\n\n&gt; J1\n\n\nYou missed! Try again:\n\n\n\nPress Enter\
-    \ and pass the move to another player\n&gt; \n\n  1 2 3 4 5 6 7 8 9 10\nA X ~\
-    \ ~ ~ ~ ~ ~ ~ ~ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~\
-    \ ~ ~ X ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ X ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n\
-    \  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~\
-    \ ~ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M\
-    \ O ~ M\nG ~ ~ ~ ~ ~ ~ ~ O ~ M\nH ~ O O O O O ~ O ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\n\
-    J M ~ ~ ~ ~ ~ ~ ~ ~ ~\n\nPlayer 2, it&#39;s your turn:\n\n&gt; J8\n\n\nYou hit\
-    \ a ship!\n\n\nPress Enter and pass the move to another player\n&gt; \n\n\n  1\
-    \ 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~\
-    \ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M ~\
-    \ ~ M\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\nJ\
-    \ M ~ ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n  1 2 3 4 5 6 7 8 9 10\nA X ~ ~\
-    \ ~ ~ ~ ~ ~ ~ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~ ~\
-    \ ~ X ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ X ~ ~ ~ ~ ~ X O O\n\nPlayer\
-    \ 1, it&#39;s your turn:\n\n&gt; J2\n\n\nYou missed! Try again:\n\n\n\nPress Enter\
-    \ and pass the move to another player\n&gt; \n\n  1 2 3 4 5 6 7 8 9 10\nA X ~\
-    \ ~ ~ ~ ~ ~ ~ ~ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~\
-    \ ~ ~ X ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ X ~ ~ ~ ~ ~ X ~ ~\n---------------------\n\
-    \  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~\
-    \ ~ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M\
-    \ O ~ M\nG ~ ~ ~ ~ ~ ~ ~ O ~ M\nH ~ O O O O O ~ O ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\n\
-    J M M ~ ~ ~ ~ ~ ~ ~ ~\n\nPlayer 2, it&#39;s your turn:\n\n&gt; J9\n\n\nYou hit\
-    \ a ship!\n\n\nPress Enter and pass the move to another player\n&gt; \n\n\n  1\
-    \ 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~ ~\
-    \ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M ~\
-    \ ~ M\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nH ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\nJ\
-    \ M M ~ ~ ~ ~ ~ ~ ~ ~\n---------------------\n  1 2 3 4 5 6 7 8 9 10\nA X ~ ~\
-    \ ~ ~ ~ ~ ~ ~ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~ ~\
-    \ ~ X ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ X ~ ~ ~ ~ ~ X X O\n\nPlayer\
-    \ 1, it&#39;s your turn:\n\n&gt; J3\n\n\nYou missed! Try again:\n\n\n\nPress Enter\
-    \ and pass the move to another player\n&gt; \n\n  1 2 3 4 5 6 7 8 9 10\nA X ~\
-    \ ~ ~ ~ ~ ~ ~ ~ ~\nB X ~ ~ ~ ~ ~ ~ ~ X ~\nC X ~ ~ ~ ~ ~ ~ ~ X ~\nD X ~ ~ ~ ~ ~\
-    \ ~ ~ X ~\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nF ~ ~ X X X X X ~ ~ ~\nG ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n\
-    H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nI ~ X ~ ~ ~ ~ ~ ~ ~ ~\nJ ~ X ~ ~ ~ ~ ~ X X ~\n---------------------\n\
-    \  1 2 3 4 5 6 7 8 9 10\nA ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nB ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\nC ~ ~ ~\
-    \ ~ ~ ~ ~ X ~ ~\nD ~ ~ ~ X X X ~ X ~ M\nE ~ ~ ~ ~ ~ ~ ~ ~ ~ M\nF ~ ~ X X X X M\
-    \ O ~ M\nG ~ ~ ~ ~ ~ ~ ~ O ~ M\nH ~ O O O O O ~ O ~ ~\nI ~ ~ M ~ ~ ~ ~ ~ ~ ~\n\
-    J M M M ~ ~ ~ ~ ~ ~ ~\n\nPlayer 2, it&#39;s your turn:\n\n&gt; J10\n\nYou sank\
-    \ a ship!\n\n\nPress Enter and pass the move to another player"
-  time: Mon, 20 Jun 2022 19:46:54 UTC
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Mon, 20 Jun 2022 19:53:46 UTC
 record: -1

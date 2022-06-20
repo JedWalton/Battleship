@@ -82,7 +82,7 @@ public class GameUtils {
                 }
             }
         }
-        return totalHitCount == 20;
+        return totalHitCount == 17;
     }
 
     public static void passTurnToOtherPlayer() {
