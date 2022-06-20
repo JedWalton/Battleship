@@ -72,5 +72,19 @@ public class GameUtils {
 
     }
 
-
+    public static boolean hasUserWon(Board board) {
+        int totalHitCount = 0;
+        for (int i = 0; i < board.board.length; i++) {
+            for (int j = 0; j < board.board.length; j++) {
+                if(board.board[j][i].equals("X")){
+                    totalHitCount += 1;
+                }
+            }
+        }
+        if(totalHitCount == 17) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

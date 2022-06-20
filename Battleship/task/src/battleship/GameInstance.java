@@ -25,8 +25,9 @@ public class GameInstance {
             System.out.println();
             board.displayBoardWithFogOfWar();
             GameUtils.takeAShot(board);
-            System.out.println();
-            board.displayBoardWithShips();
+            if (GameUtils.hasUserWon(board)) {
+                isGameOver = true;
+            }
         }
     }
 }

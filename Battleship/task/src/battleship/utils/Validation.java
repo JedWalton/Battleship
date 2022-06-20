@@ -176,13 +176,13 @@ public class Validation {
     }
 
     public static boolean isValidShot(int[] userShotCoordsX1Y1, Board board) {
-        if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("X")) {
-            System.out.println("This tile has already been hit!");
-            return false;
-        } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("M")) {
-            System.out.println("This tile has already missed the ship");
-            return false;
-        }
+//        if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("X")) {
+//            System.out.println("This tile has already been hit!");
+//            return false;
+//        } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("M")) {
+//            System.out.println("This tile has already missed the ship");
+//            return false;
+//        }
         return true;
     }
 }
