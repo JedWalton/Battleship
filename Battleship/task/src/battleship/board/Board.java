@@ -17,7 +17,7 @@ public class Board {
         }
     }
 
-    public void displayBoard() {
+    public void displayBoardWithShips() {
         System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for (int i = 0; i < this.board.length; i++) {
             if (i != 0) {
@@ -32,4 +32,22 @@ public class Board {
         }
     }
 
+    public void displayBoardWithFogOfWar() {
+        System.out.println("  1 2 3 4 5 6 7 8 9 10");
+        for (int i = 0; i < this.board.length; i++) {
+            if (i != 0) {
+                System.out.println();
+            }
+            for (int j = 0; j < this.board.length; j++) {
+                if (j == 0) {
+                    System.out.print((char) (i + 65));
+                }
+                if(!board[j][i].equals("O")) {
+                    System.out.print(" " + board[j][i]);
+                } else  {
+                    System.out.print(" ~");
+                }
+            }
+        }
+    }
 }

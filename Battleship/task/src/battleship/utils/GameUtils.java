@@ -8,22 +8,22 @@ public class GameUtils {
     }
 
     public static void placeAllShipsOnBoard(Board board) {
-        board.displayBoard();
+        board.displayBoardWithShips();
         placeAircraftCarrierMessage();
         initShip(board, 5, "Aircraft Carrier");
-        board.displayBoard();
+        board.displayBoardWithShips();
         placeBattleshipMessage();
         initShip(board, 4, "Battleship");
-        board.displayBoard();
+        board.displayBoardWithShips();
         placeSubmarineMessage();
         initShip(board, 3, "Submarine");
-        board.displayBoard();
+        board.displayBoardWithShips();
         placeCruiserMessage();
         initShip(board, 3, "Cruiser");
-        board.displayBoard();
+        board.displayBoardWithShips();
         placeDestroyerMessage();
         initShip(board, 2, "Destroyer");
-        board.displayBoard();
+        board.displayBoardWithShips();
 
     }
 
@@ -59,7 +59,7 @@ public class GameUtils {
         System.out.println("\n\nEnter the coordinates of the Destroyer (2 cells):\n");
     }
 
-    public static Board takeAShot(Board board) {
+    public static void takeAShot(Board board) {
         System.out.println("\nTake a shot!\n");
 
         int[] userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
@@ -68,10 +68,8 @@ public class GameUtils {
         while (!Validation.isValidShot(userShotCoordsX1Y1, board)) {
             userShotCoordsX1Y1 = UserInput.getTakeAShotInput();
         }
-
         ShipAndShotsUtils.takeShot(userShotCoordsX1Y1, board);
 
-        return board;
     }
 
 

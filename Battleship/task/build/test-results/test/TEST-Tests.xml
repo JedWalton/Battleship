@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-20T04:08:37" hostname="PC" time="0.174">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-20T15:49:53" hostname="PC" time="0.198">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.174"/>
+  <testcase name="start" classname="Tests" time="0.198"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
   1 2 3 4 5 6 7 8 9 10
@@ -110,12 +110,26 @@ J ~ O ~ ~ ~ ~ ~ O O O
 
 The game starts!
 
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 Take a shot!
 
 > A1
 
 [0, 0]
+
 You hit a ship!
+
   1 2 3 4 5 6 7 8 9 10
 A X ~ ~ ~ ~ ~ ~ ~ ~ ~
 B O ~ ~ ~ ~ ~ ~ ~ O ~
@@ -127,6 +141,17 @@ G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 I ~ O ~ ~ ~ ~ ~ ~ ~ ~
 J ~ O ~ ~ ~ ~ ~ O O O
+  1 2 3 4 5 6 7 8 9 10
+A X ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 Take a shot!
 
 ?[1;31m
@@ -237,6 +262,18 @@ J ~ ~ O O O O O ~ ~ ~
 
 The game starts!
 
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 Take a shot!
 
 > M1
@@ -252,7 +289,9 @@ Error! You entered the wrong coordinates! Try again:
 > E4
 
 [3, 4]
+
 You missed!
+
 
   1 2 3 4 5 6 7 8 9 10
 A O ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -265,6 +304,17 @@ G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 H O O O ~ ~ ~ ~ ~ ~ ~
 I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 J ~ ~ O O O O O ~ ~ ~
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ M ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 Take a shot!
 
 ?[1;31m
@@ -375,12 +425,26 @@ J ~ ~ O O O O O ~ ~ ~
 
 The game starts!
 
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 Take a shot!
 
 > E8
 
 [7, 4]
+
 You hit a ship!
+
   1 2 3 4 5 6 7 8 9 10
 A O ~ ~ ~ ~ ~ ~ ~ ~ ~
 B O ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -392,6 +456,17 @@ G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 H O O O ~ ~ ~ ~ ~ ~ ~
 I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 J ~ ~ O O O O O ~ ~ ~
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ X ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 Take a shot!
 
 ]]></system-out>

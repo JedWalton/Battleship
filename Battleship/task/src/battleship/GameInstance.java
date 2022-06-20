@@ -19,11 +19,14 @@ public class GameInstance {
     }
 
     public void startGameLoop(Board board) {
-        System.out.println("\n\nThe game starts!");
+        System.out.println("\n\nThe game starts!\n");
         boolean isGameOver = false;
         while (!isGameOver) {
+            System.out.println();
+            board.displayBoardWithFogOfWar();
             GameUtils.takeAShot(board);
-            board.displayBoard();
+            System.out.println();
+            board.displayBoardWithShips();
         }
     }
 }

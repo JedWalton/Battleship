@@ -26,10 +26,10 @@ public class ShipAndShotsUtils {
     public static void takeShot(int[] userShotCoordsX1Y1, Board board) {
         if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("~")) {
             board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "M";
-            System.out.println("You missed!\n");
+            System.out.println("\nYou missed!\n");
         } else if (board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]].equals("O")) {
             board.board[userShotCoordsX1Y1[0]][userShotCoordsX1Y1[1]] = "X";
-            System.out.println("You hit a ship!");
+            System.out.println("\nYou hit a ship!");
         }
     }
 }
